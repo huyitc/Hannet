@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>E:\54. AIO_ACCESSCONTROL\BuildWeb</_PublishTargetUrl>
+    <History>True|2022-06-20T07:40:36.4907316Z;</History>
+  </PropertyGroup>
+</Project>

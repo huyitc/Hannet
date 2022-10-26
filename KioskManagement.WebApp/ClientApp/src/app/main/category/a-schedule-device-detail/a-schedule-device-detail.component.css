@@ -1,0 +1,17 @@
+fieldset{
+    border: 2px solid grey;
+    padding: 8px;
+}
+.table-weekday{
+    min-width: 180px;
+}
+.res-table-container{
+    max-height: 350px;
+    overflow-x: hidden;
+}
+.legend-weekday{
+    padding: 5px 8px;
+    width: auto;
+    margin-left: 10px;
+    font-weight: 600;
+}

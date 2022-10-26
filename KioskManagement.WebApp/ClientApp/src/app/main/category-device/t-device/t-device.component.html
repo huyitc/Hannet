@@ -1,0 +1,285 @@
+<ng-progress #progressBar color="red"></ng-progress>
+<mat-card>
+    <div>
+        <mat-card-title color="primary">{{'tDeviceModule.title'|translate}}</mat-card-title>
+        <mat-divider></mat-divider>
+        <br>
+        <br>
+        <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column">
+            <div fxFlex fxLayoutAlign="start center" >
+                <button mat-raised-button color="primary" (click)="openDialog('create')"
+                    *ngIf="'CreateTDevice'|userRoles">
+                    {{'button.createButton'|translate}}
+                </button>
+                <button color="warn" mat-raised-button [disabled]="selection.selected.length==0" (click)="removeData()"
+                    *ngIf="'DeleteTDevice'|userRoles">
+                    {{'button.deleteButton'|translate}} </button>
+            </div>
+            <div fxFlex></div>
+            <div fxFlex>
+                <mat-form-field appearance="standard" ngClass.md="width100">
+                    <mat-label> {{'button.searchButton'|translate}}</mat-label>
+                    <input (keyup)="applyFilter($event)" matInput placeholder="{{'button.searchPlaceholder'|translate}}"
+                        #inputSearch>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="mat-elevation-z8 table-container" *ngIf="'ViewTDevice'|userRoles">
+        <div class="res-table-container">
+            <table mat-table [dataSource]="dataSource" matSort>
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef class="checkbox-col">
+                        <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                        </mat-checkbox>
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
+                            [aria-label]="checkboxLabel(row)">
+                        </mat-checkbox>
+                    </td>
+                </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef>{{'button.positionCol'|translate}}</th>
+                    <td mat-cell *matCellDef="let element;index as i">{{(i+1)+(page*pageSize)}}</td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="devName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'tDeviceModule.tDevNameCol'|translate}}
+                    </th>
+                    <td mat-cell *matCellDef="let element">{{element.devName}}</td>
+                </ng-container>
+
+                <!-- Ip Column -->
+                <ng-container matColumnDef="devIp">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        {{'tDeviceModule.tDevIpCol'|translate}}
+                    </th>
+                    <td mat-cell *matCellDef="let element">{{element.devIp}}</td>
+                </ng-container>
+
+                <!-- Port Column -->
+                <ng-container matColumnDef="devPort">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        {{'tDeviceModule.tDevPortCol'|translate}}
+                    </th>
+                    <td mat-cell *matCellDef="let element">{{element.devPort}}</td>
+                </ng-container>
+
+                <!-- MAC address Column -->
+                <ng-container matColumnDef="devMacaddress">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        {{'tDeviceModule.tDevMacAddressCol'|translate}}
+                    </th>
+                    <td mat-cell *matCellDef="let element">{{element.devMacaddress}}</td>
+                </ng-container>
+
+                <!-- Serialnumber Column -->
+                <ng-container matColumnDef="devSerialnumber">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        {{'tDeviceModule.tDevSNCol'|translate}}
+                    </th>
+                    <td mat-cell *matCellDef="let element">{{element.devSerialnumber}}</td>
+                </ng-container>
+
+                <!-- Partnumber Column -->
+                <ng-container matColumnDef="devPartnumber">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        {{'tDeviceModule.tDevPNCol'|translate}}
+                    </th>
+                    <td mat-cell *matCellDef="let element">{{element.devPartnumber}}</td>
+                </ng-container>
+
+                <!-- Device type name Column -->
+                <ng-container matColumnDef="devTypeName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        {{'tDeviceModule.tDevDevTypeNameCol'|translate}}
+                    </th>
+                    <td mat-cell *matCellDef="let element">{{element.devTypeName}}</td>
+                </ng-container>
+
+                <!-- Zone name Column -->
+                <ng-container matColumnDef="zonName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        {{'tDeviceModule.tDevZoneNameCol'|translate}}
+                    </th>
+                    <td mat-cell *matCellDef="let element">{{element.zonName}}</td>
+                </ng-container>
+
+                <!-- Time Check Column -->
+                <ng-container matColumnDef="devTimeCheck">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'tDeviceModule.tDevTimeCheckCol'|translate}}
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-checkbox [checked]="element.devTimeCheck" [disableRipple]="true"
+                            (click)="$event.preventDefault()">
+                        </mat-checkbox>
+                    </td>
+                </ng-container>
+
+                <!-- Status Column -->
+                <ng-container matColumnDef="devStatus">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'tDeviceModule.tDevStatusCol'|translate}}
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-checkbox [checked]="element.devStatus" [disableRipple]="true"
+                            (click)="$event.preventDefault()">
+                        </mat-checkbox>
+                    </td>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="action" stickyEnd>
+                    <th mat-header-cell *matHeaderCellDef class="action-col">{{'button.actionCol'|translate}}</th>
+                    <td mat-cell *matCellDef="let element">
+                        <a href="javascript:void(0)" color="primary" matTooltip="{{'button.editButton'|translate}}"
+                            (click)="openDialog('edit',element)" *ngIf="'UpdateTDevice'|userRoles">
+                            <mat-icon>edit</mat-icon>
+                        </a>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+        <mat-paginator [pageSizeOptions]="pageSizeOptions" pageSize="pageSize" (page)="onChangePage($event)"
+            [pageIndex]="page" [length]="totalRow" showFirstLastButtons [disabled]="false"
+            aria-label="Select page of appRoles elements">
+        </mat-paginator>
+    </div>
+</mat-card>
+<ng-template #dialog>
+    <form action="" (submit)="addData()" [formGroup]="tDeviceForm">
+        <h2 mat-dialog-title>{{title | translate}}</h2>
+        <mat-dialog-content class="mat-typography">
+            <mat-form-field appearance="outline">
+                <mat-label>{{'tDeviceModule.tDevZoneNameCol'|translate}}</mat-label>
+                <input invalidAutocompleteString type="text" placeholder="{{'tDeviceModule.tDevZoneNameCol'|translate}}"
+                    aria-label="" [formControl]="aZoneControl" matInput [matAutocomplete]="autoAZone">
+                <button type="button" *ngIf="aZoneControl.value" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="aZoneControl.reset()">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-autocomplete #autoAZone="matAutocomplete" [displayWith]="displayFnAZone">
+                    <mat-option *ngFor="let option of optionsAZones|async" [value]="option"
+                        (onSelectionChange)="onchangeAZone($event,option)">
+                        {{option.zonName}}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="aZoneControl.hasError('required')">
+                    {{'tDeviceModule.aZoneRequired'|translate}}
+                </mat-error>
+                <mat-error
+                    *ngIf="!aZoneControl.hasError('required') && aZoneControl.hasError('invalidAutocompleteObject')">
+                    {{'tDeviceModule.aZoneChooseRequired'|translate}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>{{'tDeviceModule.tDevDevTypeNameCol'|translate}}</mat-label>
+                <input type="text" placeholder="{{'tDeviceModule.tDevDevTypeNameCol'|translate}}" aria-label=""
+                    [formControl]="tDeviceTypeControl" matInput [matAutocomplete]="autoTDeviceType">
+                <button type="button" *ngIf="tDeviceTypeControl.value" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="tDeviceTypeControl.reset()">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-autocomplete [displayWith]="displayFnTdevType" #autoTDeviceType="matAutocomplete">
+                    <mat-option *ngFor="let option of optionsTDeviceTypes|async" [value]="option"
+                        (onSelectionChange)="onchangeTDevType($event,option)">
+                        {{option.devTypeName}}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="tDeviceTypeControl.hasError('required')">
+                    {{'tDeviceModule.tDevTypeRequired'|translate}}
+                </mat-error>
+                <mat-error
+                    *ngIf="!tDeviceTypeControl.hasError('required') && tDeviceTypeControl.hasError('invalidAutocompleteObject')">
+                    {{'tDeviceModule.tDevTypeChooseRequired'|translate}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>{{'tDeviceModule.tDevNameCol'|translate}}</mat-label>
+                <input matInput placeholder="{{'tDeviceModule.tDevNameCol'|translate}}" formControlName="devName"
+                    maxlength="100" #devName required>
+                <mat-hint align="end">{{devName.value.length}} / 100</mat-hint>
+                <mat-error *ngIf="getValidForm.devName.hasError('required')">
+                    {{'tDeviceModule.tDevNameRequired'|translate}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>{{'tDeviceModule.tDevIpCol'|translate}}</mat-label>
+                <input matInput placeholder="{{'tDeviceModule.tDevIpCol'|translate}}" formControlName="devIp"
+                    maxlength="15" #devIp required>
+                <mat-hint align="end">{{devIp.value.length}} / 15</mat-hint>
+                <mat-error *ngIf="getValidForm.devIp.hasError('required')">
+                    {{'tDeviceModule.tDevIpRequired'|translate}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>{{'tDeviceModule.tDevPortCol'|translate}}</mat-label>
+                <input type="number" matInput placeholder="{{'tDeviceModule.tDevPortCol'|translate}}"
+                    formControlName="devPort" #devPort>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>{{'tDeviceModule.tDevCodeCol'|translate}}</mat-label>
+                <input matInput placeholder="{{'tDeviceModule.tDevCodeCol'|translate}}" formControlName="devCode"
+                    maxlength="20" #devCode>
+                <mat-hint align="end">{{devCode.value.length}} / 20</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>{{'tDeviceModule.tDevSNCol'|translate}}</mat-label>
+                <input matInput placeholder="{{'tDeviceModule.tDevSNCol'|translate}}" formControlName="devSerialnumber"
+                    maxlength="20" #devSerialnumber>
+                <mat-hint align="end">{{devSerialnumber.value.length}} / 20</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>{{'tDeviceModule.tDevPNCol'|translate}}</mat-label>
+                <input matInput placeholder="{{'tDeviceModule.tDevPNCol'|translate}}" formControlName="devPartnumber"
+                    maxlength="20" #devPartnumber>
+                <mat-hint align="end">{{devPartnumber.value.length}} / 20</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>{{'tDeviceModule.tDevMacAddressCol'|translate}}</mat-label>
+                <input matInput placeholder="{{'tDeviceModule.tDevMacAddressCol'|translate}}"
+                    formControlName="devMacaddress" maxlength="20" #devMacaddress>
+                <mat-hint align="end">{{devMacaddress.value.length}} / 20</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>{{'tDeviceModule.tDevLaneCheckCol'|translate}}</mat-label>
+                <mat-select formControlName="devLaneCheck">
+                    <mat-option *ngFor="let option of devLaneChecks" [value]="option.value">
+                        {{option.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="getValidForm.devLaneCheck.hasError('required')">
+                    {{'tDeviceModule.devLaneCheckRequired'|translate}}
+                </mat-error>
+            </mat-form-field>
+            <div fxLayout.gt-xs="row" fxLayout.lt-xs="column">
+                <div fxFlex.gt-xs="50" fxFlex.lt-xs="100">
+                    <mat-checkbox formControlName="devTimeCheck">
+                        {{'tDeviceModule.tDevTimeCheckCol'|translate}}
+                    </mat-checkbox>
+                </div>
+                <div class="action-blurb" fxFlex.gt-xs="50" fxFlexOffset.lt-xs="100" fxFlexOffset.gt-xs="5"
+                    fxFlexOffset.lt-xs="0">
+                    <mat-checkbox formControlName="devStatus">
+                        {{'tDeviceModule.tDevStatusCol'|translate}}
+                    </mat-checkbox>
+                </div>
+            </div>
+        </mat-dialog-content>
+
+        <mat-dialog-actions align="center" class="sticky-modal-footer">
+            <button mat-stroked-button color="warn" mat-dialog-close>{{'button.cancelButton'|translate}}</button>
+            <button mat-stroked-button color="primary" type="submit"
+                [disabled]="preventAbuse">{{'button.saveButton'|translate}}</button>
+        </mat-dialog-actions>
+    </form>
+</ng-template>

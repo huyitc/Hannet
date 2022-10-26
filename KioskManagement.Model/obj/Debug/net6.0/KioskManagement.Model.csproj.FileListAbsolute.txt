@@ -1,0 +1,16 @@
+F:\WebBase\KioskManagement.Model\bin\Debug\net6.0\KioskManagement.Model.deps.json
+F:\WebBase\KioskManagement.Model\bin\Debug\net6.0\KioskManagement.Model.runtimeconfig.json
+F:\WebBase\KioskManagement.Model\bin\Debug\net6.0\KioskManagement.Model.dll
+F:\WebBase\KioskManagement.Model\bin\Debug\net6.0\KioskManagement.Model.pdb
+F:\WebBase\KioskManagement.Model\obj\Debug\net6.0\KioskManagement.Model.csproj.AssemblyReference.cache
+F:\WebBase\KioskManagement.Model\obj\Debug\net6.0\KioskManagement.Model.Properties.Resources.resources
+F:\WebBase\KioskManagement.Model\obj\Debug\net6.0\KioskManagement.Model.csproj.GenerateResource.cache
+F:\WebBase\KioskManagement.Model\obj\Debug\net6.0\KioskManagement.Model.GeneratedMSBuildEditorConfig.editorconfig
+F:\WebBase\KioskManagement.Model\obj\Debug\net6.0\KioskManagement.Model.AssemblyInfoInputs.cache
+F:\WebBase\KioskManagement.Model\obj\Debug\net6.0\KioskManagement.Model.AssemblyInfo.cs
+F:\WebBase\KioskManagement.Model\obj\Debug\net6.0\KioskManagement.Model.csproj.CoreCompileInputs.cache
+F:\WebBase\KioskManagement.Model\obj\Debug\net6.0\KioskManagement.Model.dll
+F:\WebBase\KioskManagement.Model\obj\Debug\net6.0\refint\KioskManagement.Model.dll
+F:\WebBase\KioskManagement.Model\obj\Debug\net6.0\KioskManagement.Model.pdb
+F:\WebBase\KioskManagement.Model\obj\Debug\net6.0\KioskManagement.Model.genruntimeconfig.cache
+F:\WebBase\KioskManagement.Model\obj\Debug\net6.0\ref\KioskManagement.Model.dll

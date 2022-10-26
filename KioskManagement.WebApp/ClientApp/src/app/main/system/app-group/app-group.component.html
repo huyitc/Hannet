@@ -1,0 +1,147 @@
+<ng-progress #progressBar color="red"></ng-progress>
+<mat-card>
+  <div>
+    <mat-card-title color="primary">{{'appGroupModule.title'|translate}}</mat-card-title>
+    <mat-divider></mat-divider>
+    <br>
+    <br>
+    <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column">
+      <div fxFlex fxLayoutAlign="satrt center" >
+        <button mat-raised-button color="primary" (click)="openDialog('create')" *ngIf="'CreateGroup'|userRoles">
+          {{'button.createButton'|translate}}
+        </button>
+        <button color="warn" mat-raised-button [disabled]="selection.selected.length==0"
+                (click)="removeData()" *ngIf="'DeleteGroup'|userRoles">
+          {{'button.deleteButton'|translate}}
+        </button>
+      </div>
+      <div fxFlex></div>
+      <div fxFlex>
+        <mat-form-field appearance="standard" ngClass.md="width100">
+          <mat-label> {{'button.searchButton'|translate}}</mat-label>
+          <input matInput (keyup)="applyFilter($event)"
+                 placeholder="{{'button.searchPlaceholder'|translate}}"
+                 #inputSearch>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="mat-elevation-z8 table-container" *ngIf="'ViewGroup'|userRoles">
+    <div class="res-table-container">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef class="checkbox-col">
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()"
+                          [aria-label]="checkboxLabel()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)"
+                          [aria-label]="checkboxLabel(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>{{'button.positionCol'|translate}}</th>
+          <td mat-cell *matCellDef="let element;index as i">{{(i+1)+(page*pageSize)}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="groupCode">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'appGroupModule.groupCodeCol'|translate}}</th>
+          <td mat-cell *matCellDef="let element">{{element.groupCode}}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'appGroupModule.nameCol'|translate}}</th>
+          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="createdBy">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'button.createdByCol'|translate}}</th>
+          <td mat-cell *matCellDef="let element">{{element.createdBy|userPipe}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="createdDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'button.createdDateCol'|translate}}</th>
+          <td mat-cell *matCellDef="let element">{{element.createdDate|date:'dd-MM-yyyy HH:mm:ss'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action" stickyEnd>
+          <th mat-header-cell *matHeaderCellDef class="action-col">{{'button.actionCol'|translate}}</th>
+          <td mat-cell *matCellDef="let element">
+            <a href="javascript:void(0)" color="primary"
+               matTooltip="{{'button.editButton'|translate}}"
+               (click)="openDialog('edit',element)" *ngIf="'UpdateGroup'|userRoles"> <mat-icon>edit</mat-icon></a>
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+
+    </div>
+    <mat-paginator [pageSizeOptions]="pageSizeOptions" pageSize="pageSize"
+                   (page)="onChangePage($event)" [pageIndex]="page" [length]="totalRow"
+                   showFirstLastButtons [disabled]="false"
+                   aria-label="Select page of appRoles elements">
+    </mat-paginator>
+  </div>
+</mat-card>
+<ng-template #dialog>
+  <form action="" (submit)="addData()" [formGroup]="groupForm">
+    <h2 mat-dialog-title>{{title | translate}}</h2>
+    <mat-dialog-content class="mat-typography">
+      <mat-form-field appearance="outline">
+        <mat-label>{{'appGroupModule.groupCodeCol'|translate}}</mat-label>
+        <input matInput placeholder="{{'appGroupModule.groupCodeCol'|translate}}"
+               formControlName="groupCode" maxlength="50" #groupCode required>
+        <mat-hint align="end">{{groupCode.value.length}} / 50</mat-hint>
+        <mat-error *ngIf="getValidForm.groupCode.hasError('required')">
+          {{'appGroupModule.groupCodeRequired'|translate}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{'appGroupModule.nameCol'|translate}}</mat-label>
+        <input matInput placeholder="{{'appGroupModule.nameCol'|translate}}" formControlName="name" #groupName maxlength="50" required>
+        <mat-hint align="end">{{groupName.value.length}} / 50</mat-hint>
+        <mat-error *ngIf="getValidForm.name.hasError('required')">
+          {{'appGroupModule.nameRequired'|translate}}
+        </mat-error>
+      </mat-form-field>
+
+      <fieldset>
+        <legend>{{'appGroupModule.chooseRoleCol'|translate}}</legend>
+        <mat-tree [dataSource]="treeRoles" [treeControl]="treeControl">
+          <<mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+            <button type="button" mat-icon-button disabled></button>
+            <mat-checkbox class="checklist-leaf-node" [checked]="checklistSelection.isSelected(node)" (change)="todoLeafItemSelectionToggle(node)">{{node.name}}</mat-checkbox>
+          </mat-tree-node>
+          <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+            <button type="button" mat-icon-button matTreeNodeToggle
+                    [attr.aria-label]="'Toggle ' + node.name">
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+              </mat-icon>
+            </button>
+            <mat-checkbox [checked]="descendantsAllSelected(node)" (change)="todoItemSelectionToggle(node)">{{node.name}}</mat-checkbox>
+          </mat-tree-node>
+        </mat-tree>
+      </fieldset>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center" class="sticky-modal-footer">
+      <button mat-stroked-button color="warn" mat-dialog-close>{{'button.cancelButton'|translate}}</button>
+      <button mat-stroked-button color="primary" type="submit" [disabled]="preventAbuse">{{'button.saveButton'|translate}}</button>
+    </mat-dialog-actions>
+  </form>
+</ng-template>

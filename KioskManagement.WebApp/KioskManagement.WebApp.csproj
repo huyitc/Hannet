@@ -1,0 +1,144 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <SpaProxyServerUrl>https://localhost:44489</SpaProxyServerUrl>
+    <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\.angular\**" />
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\.angular\**" />
+    <EmbeddedResource Remove="ClientApp\.angular\**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\.angular\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\0.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\1.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\10.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\11.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\12.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\2.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\3.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\4.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\5.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\6.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\7.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\8.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\9.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\index.pack" />
+    <None Remove="ClientApp\.angular\cache\angular-webpack\4be870074e2b8e3044b1381dafaa8230814afc7e\index.pack.old" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\01786914c21146184eb0c6d64f61e9d4.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\0386ac355bc8243dee57ccfc6a6cab3f.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\05b025fd6a60b0429d5c49a0beb9735b.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\0ab7f0d3a021d2e6a87f3f203fc52766.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\1aa95cafe39f5d7dc762d50ad8e9e055.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\1d42978dcd6b5b81d85142c4310a8d4e.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\1dee9db32ee4303825121a8a92f9bbe2.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\1f95806a7bc01b042fcf98d1d11903be.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\206e378613b79961341502c1dafc18ea.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\20fa50df9b3e94be98e8b416f5191069.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\230e98b1475325eac5fdd7ed2bb606e9.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\24fb6737b8fb71f871d453f9bfd7914a.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\2c3477b94c30aba0656f57f48aad9c47.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\2d259224ea62060a7af951e84b39d895.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\3123ed928846af3f50fd0d6115413f3f.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\31f721d0e79b550db1f125024612ffbd.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\34f7359a434431a429575e4191d63d97.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\3d41ccce5c360706c932101576bcb506.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\3e61a5c86d549ce82d89992ea555fdc6.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\3fee2ec77556387deeb84b96d293b0bf.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\436d07a746bf069cf6d61aedda19b4ea.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\4644ea9770b91a175ebdd9fecd78f0a9.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\466d6beb06b9a1ef4bdb856cd4fc8306.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\4f2dec76ac971ada7433f5cdf7cc6c1a.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\5432955b34e5e2ade8232a2899e87c63.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\58e25a87afa06b901741c1bf38835d8c.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\5c9613123b489d1a6443437cb420e839.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\637dc08c73504dbad473190b647125e1.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\6e5eb4417a172880c081d1db64bb2e6d.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\6eb01ed9326dfc0e786c5958f91cef6c.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\6f13a3fc08591ede57f7612f5fcfde09.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\6f64ca2d5530147769b5b8e148594ff0.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\7229ac13dad611d0d290688b710de56c.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\72c597cbc8f34a768bfe1e1ab49a5d9a.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\7365f120afc1b94b87e00dc2ce5cee92.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\74258f31f9684e4a9df82158c263d441.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\76cdc89348ef15a855c37e5e80b5764d.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\7fa6902c509542136064685843e5894c.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\812b4cab53956e3e6ad7a85a4ba4f41a.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\82210865a652720742b22fc4d8805434.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\823559837bbe44ac92df1b53984c5c1e.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\833aad7ceefa697ade656ccd9c001195.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\85819ebe99bf88e853c6b9b7986cdb1a.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\85b761bddf3b33ac1680c4cab07828be.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\8ca5e55f1fbd46450178eb875c484a70.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\95d0588be803c533646b06766d28f829.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\96a9aa608b3c0bf2cf650aad7bf846a1.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\99f6151a40d0cf5822943888b7474b7d.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\9cecd1ea6929c68db5222d8a816e98a0.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\9e73073d9a01b1e256352fc9ccebd638.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\a0b437aeeb142abc772e35707019f832.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\a3820695c597410b057c96f279616c4b.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\a91ec880ccefa84c91cea12e82edde0e.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\b084dd69861ed1101f851d84f6843a05.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\b455fd6daabf082debeb4c3db77a24b6.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\c1fd3a7f331ab3172cc0837085012f66.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\c882f546374eb647a77a8f39cdf08463.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\d04c755fd040c258686b678797e36939.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\d0694218de7944821d9ce044b58ae098.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\d3799c7f337b0f098500397fa52ea763.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\e4bb7affcb5a3a0ce9b680c1ae8a781f.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\eaad610768f9668b9b4d0bdbcaf4a816.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\eb9d5ef4f505cc764bac9d86169b0776.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\ee81a5ba0e4248f9acbe9a2120a19500.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\f1f8a10f4514ba771b10d2b9413b1a0b.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\f7c0800c172fcfc3c6f173745122b2fd.json" />
+    <None Remove="ClientApp\.angular\cache\babel-webpack\ff0725afe0a5784ed808b7cf91dbfd38.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\main\category-device\" />
+    <Folder Include="ClientApp\src\app\main\category\" />
+    <Folder Include="ClientApp\src\app\main\manage\" />
+  </ItemGroup>
+
+    <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+  
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>wwwroot\%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+</Project>
