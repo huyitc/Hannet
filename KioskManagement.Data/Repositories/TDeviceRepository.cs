@@ -15,6 +15,7 @@ namespace KioskManagement.Data.Repositories
         Task<IQueryable<TDeviceMapping>> GetListPaging(string keyword);
         Task<IQueryable<TDevice>> GetDeviceMorpho();
         Task<IQueryable<TDevice>> GetDeviceUNV();
+        Task<IQueryable<TDevice>> GetDeviceHAN();
     }
     public class TDeviceRepository : RepositoryBase<TDevice>, ITDeviceRepository
     {
@@ -22,6 +23,15 @@ namespace KioskManagement.Data.Repositories
         public TDeviceRepository(AIOAcessContolDbContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        public async Task<IQueryable<TDevice>> GetDeviceHAN()
+        {
+            var query = (from d in _dbContext.TDevices
+                         join dt in _dbContext.TDeviceTypes on d.DevTypeId equals dt.DevTypeId
+                         where d.DevStatus == true && dt.DevTypeCode == "HAN"
+                         select d).ToListAsync();
+            return (await query).AsQueryable();
         }
 
         public async Task<IQueryable<TDevice>> GetDeviceMorpho()

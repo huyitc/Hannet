@@ -453,6 +453,7 @@ export class TEmployeeComponent implements OnInit {
       this.preventAbuse = false;
     });
   }
+
   getScheDevDetail() {
     this.preventAbuse = true;
     this.dataService.get('AScheduleDeviceDetail/getall').subscribe((data: any) => {
@@ -726,6 +727,7 @@ export class TEmployeeComponent implements OnInit {
     this.FormCreateVehicle.reset();
     this.selection.clear();
   }
+  
   isSectionSelectedEmStatus(): boolean {
     if (this.selection.selected.length == 0) {
       return false;
@@ -735,6 +737,7 @@ export class TEmployeeComponent implements OnInit {
     });
     return check;
   }
+
   isSectionSelectedNotEmStatus(): boolean {
     if (this.selection.selected.length == 0) {
       return false;
@@ -744,6 +747,7 @@ export class TEmployeeComponent implements OnInit {
     });
     return check;
   }
+  
   //lock muilti
   lockEMployee() {
     let lstEmChecked: any[] = [];
@@ -754,6 +758,7 @@ export class TEmployeeComponent implements OnInit {
     this.translateService.get('messageSystem.confirmLock').subscribe(data => MessageConstants.CONFIRM_LOCK_MSG = data);
     this.notificationService.printConfirmationDialog(MessageConstants.CONFIRM_LOCK_MSG, () => this.lockItemConfirm(JSON.stringify(lstEmChecked)));
   }
+
   lockItemConfirm(lstemId: string) {
     this.preventAbuse = true;
     this.spinner.show();
@@ -780,6 +785,8 @@ export class TEmployeeComponent implements OnInit {
     });
   }
   //end remove
+
+
   //paging
   ngAfterViewInit() {
     this.paginator._intl.itemsPerPageLabel = this.pagin.setLable;
@@ -794,10 +801,14 @@ export class TEmployeeComponent implements OnInit {
     this.pageSize = pe.pageSize;
     this.getAllData();
   }
+
+
   // Image upload
   clearImage() {
     this.Form.controls['emImage'].setValue('');
   }
+
+
   imagePreview(e: any) {
     const file = (e.target as HTMLInputElement).files![0];
     const reader = new FileReader();
@@ -809,19 +820,8 @@ export class TEmployeeComponent implements OnInit {
     reader.readAsDataURL(file);
 
   }
-  imagePreviewVehicle(e: any) {
-    const file = (e.target as HTMLInputElement).files![0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      let base64String = reader.result as string;
-      let img = base64String.split('base64,')[1];
-      this.FormCreateVehicle.controls['vehicleImage'].setValue(img);
-    }
-    reader.readAsDataURL(file);
-  }
-  clearImageVehicle() {
-    this.FormCreateVehicle.controls['vehicleImage'].setValue('');
-  }
+
+
   //end Image
   checkMorphoDevice(event: MatOptionSelectionChange, item: any) {
     this.morphoDeviceType = "";
@@ -838,6 +838,7 @@ export class TEmployeeComponent implements OnInit {
       });
     }
   }
+
   checkUNVDevice(event: MatOptionSelectionChange, item: any) {
     this.unvDeviceConnection = false;
     if (event.source.selected) {
@@ -1258,6 +1259,7 @@ export class TEmployeeComponent implements OnInit {
       this.preventAbuse = false;
     });
   }
+
   takePhoto() {
     this.Form.controls['emImage'].setValue('');
     this.preventAbuse = true;

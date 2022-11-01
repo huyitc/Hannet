@@ -21,6 +21,7 @@ namespace KioskManagement.Service
         Task<IQueryable<TDeviceMapping>> GetListPaging(string keyword);
         Task<IQueryable<TDevice>> GetDeviceMorpho();
         Task<IQueryable<TDevice>> GetDeviceUNV();
+        Task<IQueryable<TDevice>> GetDeviceHAN();
     }
     public class TDeviceService : ITDeviceService
     {
@@ -61,6 +62,11 @@ namespace KioskManagement.Service
         public async Task<TDevice> GetById(int id)
         {
             return await _iTDeviceRepository.GetByIdAsync(id);
+        }
+
+        public async Task<IQueryable<TDevice>> GetDeviceHAN()
+        {
+            return await _iTDeviceRepository.GetDeviceHAN();
         }
 
         public async Task<IQueryable<TDevice>> GetDeviceMorpho()

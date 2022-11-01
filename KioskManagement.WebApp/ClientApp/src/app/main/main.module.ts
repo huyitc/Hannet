@@ -26,9 +26,6 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MaterialModule } from './material/material.module';
 import { TranslateService } from '@ngx-translate/core';
 import { UserRoleModule } from '../core/common/userRole.pipe';
-import { AScheduleDeviceDetailComponent } from './category/a-schedule-device-detail/a-schedule-device-detail.component';
-
-
 
 @NgModule({
   declarations: [MainComponent],

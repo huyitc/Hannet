@@ -16,11 +16,15 @@ export class DeviceTypeService {
         if (rawFile.status === 200 || rawFile.status == 0) {
           let isIdemiaDevice = JSON.parse(rawFile.responseText).Idemia;
           let isUNVDevice = JSON.parse(rawFile.responseText).UNV;
+          let isHANDevice = JSON.parse(rawFile.responseText).HAN;
           if (isIdemiaDevice) {
             result = 'idemiadevice'
           }
           if (isUNVDevice) {
             result = 'unvdevice'
+          }
+          if (isHANDevice) {
+            result = 'handevice'
           }
         }
       }

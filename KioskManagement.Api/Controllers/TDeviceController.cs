@@ -148,6 +148,27 @@ namespace KioskManagement.WebApi.Controllers
         }
 
         /// <summary>
+        /// Xem danh sách thiết bị Morpho
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("getdevicehan")]
+        [Authorize(Roles = "ViewTDevice")]
+        public async Task<IActionResult> GetDeviceHAN()
+        {
+            try
+            {
+                _logger.LogInformation("Run endpoint {endpoint} {verb}", "/api/aioaccesscontrol/TDevice/getdevicehan", "GET");
+                var result = await _tDeviceService.GetDeviceHAN();
+                var responseData = _mapper.Map<IEnumerable<TDevice>, IEnumerable<TDeviceViewModel>>(result);
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        /// <summary>
         /// Xem danh sách thiết bị phân trang
         /// </summary>
         /// <param name="page">Trang thứ</param>
