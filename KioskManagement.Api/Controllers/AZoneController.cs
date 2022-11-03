@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using KioskManagement.Common.Ultilities;
 using KioskManagement.Model.Models;
 using KioskManagement.Model.ViewModels;
 using KioskManagement.Service;
@@ -41,6 +42,16 @@ namespace KioskManagement.WebApi.Controllers
             }
             try
             {
+                var bod = new AZoneHanet
+                {
+                    name = aZoneViewModel.ZonName,
+                    address = aZoneViewModel.ZonDescription
+                };
+                var settings = new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate };
+
+                var res = await Lib.MethodPostAsyncHanet("https://partner.hanet.ai/place/addPlace", bod);
+                Place? resultInfo = JsonConvert.DeserializeObject<Place>(res.Content);
+                aZoneViewModel.PlaceId = resultInfo!.data.id;
                 var result = await _aZoneService.Add(_mapper.Map<AZoneViewModel, AZone>(aZoneViewModel));
                 var responseData = _mapper.Map<AZone, AZoneViewModel>(result);
                 return CreatedAtAction(nameof(Create), responseData);
@@ -166,6 +177,7 @@ namespace KioskManagement.WebApi.Controllers
             _logger.LogInformation("Run endpoint {endpoint} {verb}", "/api/aioaccesscontrol/AZone/delete/{id}", "DELETE");
             try
             {
+                var res = await Lib.MethodPostAsyncHanet("https://partner.hanet.ai/place/removePlace", new { placeId = id });
                 var aZone = await _aZoneService.Delete(id);
                 var responseData = _mapper.Map<AZone, AZoneViewModel>(aZone);
                 return Ok(responseData);
@@ -197,12 +209,13 @@ namespace KioskManagement.WebApi.Controllers
                     int countSuccess = 0;
                     int countError = 0;
                     List<string> result = new List<string>();
-                    var listItem = JsonConvert.DeserializeObject<List<int>>(checkedList);
+                    var listItem = JsonConvert.DeserializeObject<List<DeleteZone>>(checkedList);
                     foreach (var item in listItem)
                     {
                         try
                         {
-                            await _aZoneService.Delete(item);
+                            var res = await Lib.MethodPostAsyncHanet("https://partner.hanet.ai/place/removePlace", new { placeID = item.placeId });
+                            await _aZoneService.Delete(item.id);
                             countSuccess++;
                         }
                         catch (Exception)

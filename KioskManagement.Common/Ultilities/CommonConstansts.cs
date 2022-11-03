@@ -36,4 +36,14 @@ namespace KioskManagement.Common.Ultilities
             return sbHash.ToString();
         }
     }
+
+    public class Common
+    {
+        public static string ConvertToString(object data)
+        {
+            if (data is null)
+                return "";
+            return data.ToString();
+        }
+    }
 }
