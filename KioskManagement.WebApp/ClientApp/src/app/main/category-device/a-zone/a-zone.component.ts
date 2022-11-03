@@ -104,8 +104,9 @@ export class AZoneComponent implements OnInit {
   }
   removeData() {
     let roleChecked: any[] = [];
+    console.log(this.selection.selected)
     this.selection.selected.forEach((value: any) => {
-      let id = value.zonId;
+      let id = { id: value.zonId, placeId: value.placeId };
       roleChecked.push(id);
     });
     this.translateService.get('messageSystem.confirmDelete').subscribe(data => MessageConstants.CONFIRM_DELETE_MSG = data);

@@ -1,0 +1,10 @@
+
+*.v2
+*.vsidx
+.vs/KioskManagement/v17/.suo
+*.log
+*.dll
+*.pdb
+*.cache
+*.editorconfig
+*.sentinel

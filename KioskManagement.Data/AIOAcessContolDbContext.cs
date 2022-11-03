@@ -1129,6 +1129,8 @@ namespace KioskManagement.Data
                 entity.Property(e => e.ZonStatus)
                     .HasColumnName("ZON_STATUS")
                     .HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.PlaceId).HasColumnName("PLACE_ID");
             });
 
             modelBuilder.Entity<PShift>(entity =>
