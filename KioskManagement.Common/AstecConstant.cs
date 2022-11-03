@@ -8,6 +8,7 @@ namespace KioskManagement.Common
 {
     public static class AstecConstant
     {
+        public const string tokenHanet = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkwNTUzODg1MjE2NDgwMDUzMzAiLCJlbWFpbCI6ImZvbmdudC5hc3RlY0BnbWFpbC5jb20iLCJjbGllbnRfaWQiOiI0MDYwM2FkNTAwZmQzZTc5MDJiMThlZjY0ODNhZjhlYiIsInR5cGUiOiJhdXRob3JpemF0aW9uX2NvZGUiLCJpYXQiOjE2NjYwNzQ3NzYsImV4cCI6MTY5NzYxMDc3Nn0.mJY8kBmFT21SpT0A7YzdqsYSaoN0sk4F9i-3SMGzosU";
         // Nhân viên
         public const int emTypeIDEmployee = 1;
         // Khách

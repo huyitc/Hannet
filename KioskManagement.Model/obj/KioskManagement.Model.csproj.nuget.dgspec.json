@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\WebBase\\KioskManagement.Model\\KioskManagement.Model.csproj": {}
+    "F:\\Download\\Hannet\\KioskManagement.Model\\KioskManagement.Model.csproj": {}
   },
   "projects": {
-    "F:\\WebBase\\KioskManagement.Model\\KioskManagement.Model.csproj": {
+    "F:\\Download\\Hannet\\KioskManagement.Model\\KioskManagement.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\WebBase\\KioskManagement.Model\\KioskManagement.Model.csproj",
+        "projectUniqueName": "F:\\Download\\Hannet\\KioskManagement.Model\\KioskManagement.Model.csproj",
         "projectName": "KioskManagement.Model",
-        "projectPath": "F:\\WebBase\\KioskManagement.Model\\KioskManagement.Model.csproj",
-        "packagesPath": "C:\\Users\\HuyLN\\.nuget\\packages\\",
-        "outputPath": "F:\\WebBase\\KioskManagement.Model\\obj\\",
+        "projectPath": "F:\\Download\\Hannet\\KioskManagement.Model\\KioskManagement.Model.csproj",
+        "packagesPath": "C:\\Users\\HienLT\\.nuget\\packages\\",
+        "outputPath": "F:\\Download\\Hannet\\KioskManagement.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HuyLN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HienLT\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

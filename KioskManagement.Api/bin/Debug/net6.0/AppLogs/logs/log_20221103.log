@@ -1,0 +1,60 @@
+[2022-11-03 11:29:39+00:00] [Information] Now listening on: https://localhost:8001 
+[2022-11-03 11:29:39+00:00] [Information] Now listening on: http://localhost:5200 
+[2022-11-03 11:29:39+00:00] [Information] Application started. Press Ctrl+C to shut down. 
+[2022-11-03 11:29:39+00:00] [Information] Hosting environment: Development 
+[2022-11-03 11:29:39+00:00] [Information] Content root path: F:\Download\Hannet\KioskManagement.Api\ 
+[2022-11-03 11:30:46+00:00] [Information] Entity Framework Core 6.0.3 initialized 'AIOAcessContolDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.2' with options: using lazy loading proxies MigrationsAssembly=KioskManagement.Data.Migrations  
+[2022-11-03 11:30:47+00:00] [Information] Run endpoint /api/kioskmanagement/appmenus/gettreeviewbyuser?userid={userId} GET 
+[2022-11-03 11:30:47+00:00] [Information] Run endpoint /api/aioaccesscontrol/AZone/getlistpaging GET 
+[2022-11-03 11:30:49+00:00] [Information] Executed DbCommand (93ms) [Parameters=[], CommandType='Text', CommandTimeout='0']
+SELECT [a].[ZON_ID], [a].[ZON_DESCRIPTION], [a].[ZON_NAME], [a].[ZON_STATUS]
+FROM [A_ZONE] AS [a] 
+[2022-11-03 11:30:50+00:00] [Information] Executed DbCommand (40ms) [Parameters=[], CommandType='Text', CommandTimeout='0']
+SELECT [a].[Description] AS [MenuName], [a].[ParentId], [a].[Id], [a].[Icon], [a].[Link], [a].[ActiveLink]
+FROM [AppRoles] AS [a]
+WHERE [a].[Discriminator] = N'AppRole'
+ORDER BY [a].[Order_By] 
+[2022-11-03 11:49:28+00:00] [Information] Entity Framework Core 6.0.3 initialized 'AIOAcessContolDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.2' with options: using lazy loading proxies MigrationsAssembly=KioskManagement.Data.Migrations  
+[2022-11-03 11:49:28+00:00] [Information] Entity Framework Core 6.0.3 initialized 'AIOAcessContolDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.2' with options: using lazy loading proxies MigrationsAssembly=KioskManagement.Data.Migrations  
+[2022-11-03 11:49:28+00:00] [Information] Run endpoint /api/aioaccesscontrol/AZone/getlistpaging GET 
+[2022-11-03 11:49:28+00:00] [Information] Run endpoint /api/kioskmanagement/appmenus/gettreeviewbyuser?userid={userId} GET 
+[2022-11-03 11:49:28+00:00] [Information] Executed DbCommand (3ms) [Parameters=[@userId='?' (Size = 36)], CommandType='Text', CommandTimeout='0']
+dbo.GetMenuList @userId 
+[2022-11-03 11:49:28+00:00] [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='0']
+SELECT [a].[ZON_ID], [a].[ZON_DESCRIPTION], [a].[ZON_NAME], [a].[ZON_STATUS]
+FROM [A_ZONE] AS [a] 
+[2022-11-03 11:49:28+00:00] [Information] Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='0']
+SELECT [a].[Description] AS [MenuName], [a].[ParentId], [a].[Id], [a].[Icon], [a].[Link], [a].[ActiveLink]
+FROM [AppRoles] AS [a]
+WHERE [a].[Discriminator] = N'AppRole'
+ORDER BY [a].[Order_By] 
+[2022-11-03 12:03:30+00:00] [Information] Now listening on: https://localhost:8001 
+[2022-11-03 12:03:30+00:00] [Information] Now listening on: http://localhost:5200 
+[2022-11-03 12:03:30+00:00] [Information] Application started. Press Ctrl+C to shut down. 
+[2022-11-03 12:03:30+00:00] [Information] Hosting environment: Development 
+[2022-11-03 12:03:30+00:00] [Information] Content root path: F:\Download\Hannet\KioskManagement.Api\ 
+[2022-11-03 12:03:50+00:00] [Information] Entity Framework Core 6.0.3 initialized 'AIOAcessContolDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.2' with options: using lazy loading proxies MigrationsAssembly=KioskManagement.Data.Migrations  
+[2022-11-03 12:03:51+00:00] [Information] Run endpoint /api/kioskmanagement/appmenus/gettreeviewbyuser?userid={userId} GET 
+[2022-11-03 12:03:51+00:00] [Information] Run endpoint /api/aioaccesscontrol/AZone/getlistpaging GET 
+[2022-11-03 12:03:51+00:00] [Information] Executed DbCommand (67ms) [Parameters=[], CommandType='Text', CommandTimeout='0']
+SELECT [a].[ZON_ID], [a].[ZON_DESCRIPTION], [a].[ZON_NAME], [a].[ZON_STATUS]
+FROM [A_ZONE] AS [a] 
+[2022-11-03 12:03:52+00:00] [Information] Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='0']
+SELECT [a].[Description] AS [MenuName], [a].[ParentId], [a].[Id], [a].[Icon], [a].[Link], [a].[ActiveLink]
+FROM [AppRoles] AS [a]
+WHERE [a].[Discriminator] = N'AppRole'
+ORDER BY [a].[Order_By] 
+[2022-11-03 12:04:03+00:00] [Information] Entity Framework Core 6.0.3 initialized 'AIOAcessContolDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.2' with options: using lazy loading proxies MigrationsAssembly=KioskManagement.Data.Migrations  
+[2022-11-03 12:04:03+00:00] [Information] Entity Framework Core 6.0.3 initialized 'AIOAcessContolDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.2' with options: using lazy loading proxies MigrationsAssembly=KioskManagement.Data.Migrations  
+[2022-11-03 12:04:03+00:00] [Information] Run endpoint /api/kioskmanagement/appmenus/gettreeviewbyuser?userid={userId} GET 
+[2022-11-03 12:04:03+00:00] [Information] Run endpoint /api/aioaccesscontrol/AZone/getlistpaging GET 
+[2022-11-03 12:04:03+00:00] [Information] Executed DbCommand (3ms) [Parameters=[@userId='?' (Size = 36)], CommandType='Text', CommandTimeout='0']
+dbo.GetMenuList @userId 
+[2022-11-03 12:04:03+00:00] [Information] Executed DbCommand (42ms) [Parameters=[], CommandType='Text', CommandTimeout='0']
+SELECT [a].[ZON_ID], [a].[ZON_DESCRIPTION], [a].[ZON_NAME], [a].[ZON_STATUS]
+FROM [A_ZONE] AS [a] 
+[2022-11-03 12:04:03+00:00] [Information] Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='0']
+SELECT [a].[Description] AS [MenuName], [a].[ParentId], [a].[Id], [a].[Icon], [a].[Link], [a].[ActiveLink]
+FROM [AppRoles] AS [a]
+WHERE [a].[Discriminator] = N'AppRole'
+ORDER BY [a].[Order_By] 
