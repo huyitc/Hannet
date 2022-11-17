@@ -23,6 +23,7 @@ namespace KioskManagement.WebApi.Infrastructure.Extentsions
             CreateMap<TEmployee, TEmployeeViewModel>().ReverseMap();
             CreateMap<AScheduleDeviceDetail, AScheduleDeviceDetailViewModel>().ReverseMap();
             CreateMap<TGroupAccessDetail, TGroupAccessDetailViewModel>().ReverseMap();
+            CreateMap<TEmployeeType, TEmployeeTypeViewModel>().ReverseMap();
         }
     }
 }

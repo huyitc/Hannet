@@ -7,10 +7,10 @@
         <br>
         <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.xs="column">
             <div fxFlex fxLayoutAlign="start center" >
-                <button mat-raised-button color="primary" (click)="openDialog('create')"
+                <!-- <button mat-raised-button color="primary" (click)="openDialog('create')"
                     *ngIf="'CreateTDevice'|userRoles">
                     {{'button.createButton'|translate}}
-                </button>
+                </button> -->
                 <button color="warn" mat-raised-button [disabled]="selection.selected.length==0" (click)="removeData()"
                     *ngIf="'DeleteTDevice'|userRoles">
                     {{'button.deleteButton'|translate}} </button>

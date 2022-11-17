@@ -6991,23 +6991,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HienLT\\.nuget\\packages\\": {},
+    "C:\\Users\\HuyLN\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Download\\Hannet\\KioskManagement.Common\\KioskManagement.Common.csproj",
+      "projectUniqueName": "F:\\WebBase\\KioskManagement.Common\\KioskManagement.Common.csproj",
       "projectName": "KioskManagement.Common",
-      "projectPath": "F:\\Download\\Hannet\\KioskManagement.Common\\KioskManagement.Common.csproj",
-      "packagesPath": "C:\\Users\\HienLT\\.nuget\\packages\\",
-      "outputPath": "F:\\Download\\Hannet\\KioskManagement.Common\\obj\\",
+      "projectPath": "F:\\WebBase\\KioskManagement.Common\\KioskManagement.Common.csproj",
+      "packagesPath": "C:\\Users\\HuyLN\\.nuget\\packages\\",
+      "outputPath": "F:\\WebBase\\KioskManagement.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\HienLT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HuyLN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -7022,8 +7022,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "F:\\Download\\Hannet\\KioskManagement.Model\\KioskManagement.Model.csproj": {
-              "projectPath": "F:\\Download\\Hannet\\KioskManagement.Model\\KioskManagement.Model.csproj"
+            "F:\\WebBase\\KioskManagement.Model\\KioskManagement.Model.csproj": {
+              "projectPath": "F:\\WebBase\\KioskManagement.Model\\KioskManagement.Model.csproj"
             }
           }
         }

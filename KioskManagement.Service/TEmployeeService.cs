@@ -22,7 +22,6 @@ namespace KioskManagement.Service
         Task<TEmployee> Update(TEmployee employee);
         Task<TEmployee> Delete(int id);
         Task<IEnumerable<TEmployeeTypeMapping>> GetTypeEmployee();
-        Task<IQueryable<TEmployee>> GetAllByGaId(int gaId);
         Task<IQueryable<TEmployee>> GetEnableTimeCheck();
         Task<IQueryable<EmployeeDepMapping>> GetEmployeesByDepartment(List<int> depIds);
     }
@@ -81,14 +80,9 @@ namespace KioskManagement.Service
             return await _tEmployeeRepository.GetTypeEmployee();
         }
 
-        public async Task<IQueryable<TEmployee>> GetAllByGaId(int gaId)
-        {
-            return await _tEmployeeRepository.GetAllAsync(x => x.GaId == gaId && x.EmStatus == true);
-        }
-
         public async Task<IQueryable<TEmployee>> GetEnableTimeCheck()
         {
-            return await _tEmployeeRepository.GetAllAsync(x => x.EmTypeId == AstecConstant.emTypeIDEmployee && x.EmTimeCheck == true && x.EmStatus == true);
+            return await _tEmployeeRepository.GetAllAsync(x => x.EmTypeId == AstecConstant.emTypeIDEmployee && x.EmStatus == true);
         }
 
         public async Task<IQueryable<EmployeeDepMapping>> GetEmployeesByDepartment(List<int> depIds)

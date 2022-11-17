@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using KioskManagement.Common.Ultilities;
 using KioskManagement.Model.MappingModels;
 using KioskManagement.Model.Models;
 using KioskManagement.Model.ViewModels;
@@ -64,23 +65,29 @@ namespace KioskManagement.WebApi.Controllers
         [Authorize(Roles = "UpdateTDevice")]
         public async Task<IActionResult> Update(TDeviceViewModel tDeviceViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                _logger.LogInformation("Run endpoint {endpoint} {verb}", "/api/aioaccesscontrol/TDevice/update", "PUT");
-                var mapping = _mapper.Map<TDeviceViewModel, TDevice>(tDeviceViewModel);
-                try
-                {
-                    await _tDeviceService.Update(mapping);
-                    return CreatedAtAction(nameof(Update), new { id = mapping.DevId }, mapping);
-                }
-                catch (Exception ex)
-                {
-                    return BadRequest(ex);
-                }
-            }
-            else
+            _logger.LogInformation("Run endpoint {endpoint} {verb}", "/api/aioaccesscontrol/Device/update", "PUT");
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+            try
+            {
+                var bod = new DeviceHannet
+                {
+                    deviceID = tDeviceViewModel.DeviceId,
+                    deviceName = tDeviceViewModel.DevName,
+                };
+                var settings = new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate };
+
+                var res = await Lib.MethodPostAsyncHanet("https://partner.hanet.ai/device/updateDevice", bod);
+
+                var result = await _tDeviceService.Update(_mapper.Map<TDeviceViewModel, TDevice>(tDeviceViewModel));
+                var responseData = _mapper.Map<TDevice, TDeviceViewModel>(result);
+                return CreatedAtAction(nameof(Update), responseData);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
             }
         }
 
@@ -96,69 +103,6 @@ namespace KioskManagement.WebApi.Controllers
             {
                 _logger.LogInformation("Run endpoint {endpoint} {verb}", "/api/aioaccesscontrol/TDevice/getall", "GET");
                 var result = await _tDeviceService.GetAll();
-                var responseData = _mapper.Map<IEnumerable<TDevice>, IEnumerable<TDeviceViewModel>>(result);
-                return Ok(responseData);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
-
-        /// <summary>
-        /// Xem danh sách thiết bị Morpho
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("getdevicemorpho")]
-        [Authorize(Roles = "ViewTDevice")]
-        public async Task<IActionResult> GetDeviceMorpho()
-        {
-            try
-            {
-                _logger.LogInformation("Run endpoint {endpoint} {verb}", "/api/aioaccesscontrol/TDevice/getdevicemorpho", "GET");
-                var result = await _tDeviceService.GetDeviceMorpho();
-                var responseData = _mapper.Map<IEnumerable<TDevice>, IEnumerable<TDeviceViewModel>>(result);
-                return Ok(responseData);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
-
-        /// <summary>
-        /// Xem danh sách thiết bị UNV
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("getdeviceunv")]
-        [Authorize(Roles = "ViewTDevice")]
-        public async Task<IActionResult> GetDeviceUNV()
-        {
-            try
-            {
-                _logger.LogInformation("Run endpoint {endpoint} {verb}", "/api/aioaccesscontrol/TDevice/getdeviceunv", "GET");
-                var result = await _tDeviceService.GetDeviceUNV();
-                var responseData = _mapper.Map<IEnumerable<TDevice>, IEnumerable<TDeviceViewModel>>(result);
-                return Ok(responseData);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
-
-        /// <summary>
-        /// Xem danh sách thiết bị Morpho
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("getdevicehan")]
-        [Authorize(Roles = "ViewTDevice")]
-        public async Task<IActionResult> GetDeviceHAN()
-        {
-            try
-            {
-                _logger.LogInformation("Run endpoint {endpoint} {verb}", "/api/aioaccesscontrol/TDevice/getdevicehan", "GET");
-                var result = await _tDeviceService.GetDeviceHAN();
                 var responseData = _mapper.Map<IEnumerable<TDevice>, IEnumerable<TDeviceViewModel>>(result);
                 return Ok(responseData);
             }

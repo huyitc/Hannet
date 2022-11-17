@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using KioskManagement.Common.Ultilities;
 using KioskManagement.Model.MappingModels;
 using KioskManagement.Model.Models;
 using KioskManagement.Model.ViewModels;
@@ -153,8 +154,18 @@ namespace KioskManagement.WebApi.Controllers
             }
             try
             {
+                var bod = new EmployeeHanet
+                {
+                    name = employee.EmName,
+                    file = employee.EmImage,
+                    aliasID = employee.EmCode,
+                    placeID = employee.PlaceId,
+                    tiltle = employee.EmAddress,
+                    type = employee.EmTypeId,
+                };
+                var settings = new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate };
+                var res = await Lib.MethodPostAsyncHanet("https://partner.hanet.ai/place/addPlace", bod);
                 TEmployee em = _mapper.Map<TEmployee>(employee);
-                em.EditStatus = true;
                 var result = await _TEmployeeService.Add(em);
                 return Ok(result);
             }
@@ -181,7 +192,6 @@ namespace KioskManagement.WebApi.Controllers
             try
             {
                 TEmployee em = _mapper.Map<TEmployee>(employee);
-                em.EditStatus = true;
                 var result = await _TEmployeeService.Update(em);
                 var mapping = _mapper.Map<TEmployeeViewModel>(result);
                 return Ok(mapping);
@@ -220,7 +230,6 @@ namespace KioskManagement.WebApi.Controllers
                         {
                             var em = await _TEmployeeService.GetById(item);
                             em.EmStatus = false;
-                            em.EditStatus = true;
                             var emNew = await _TEmployeeService.Update(em);
                             countSuccess++;
                         }

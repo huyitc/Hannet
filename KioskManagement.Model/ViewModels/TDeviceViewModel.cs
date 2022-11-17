@@ -24,5 +24,11 @@ namespace KioskManagement.Model.ViewModels
         /// trạng thái vào - ra 0: KHÔNG PHÂN BIỆT, 1: VÀO , 2: RA 
         /// </summary>
         public int? DevLaneCheck { get; set; }
+        public string DeviceId { get; set; }
+    }
+    public class DeviceHannet
+    {
+       public string deviceID { get; set; }
+       public string deviceName { get; set; }
     }
 }

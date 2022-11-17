@@ -27,6 +27,7 @@ namespace KioskManagement.Model.Models
         /// trạng thái vào - ra 0: KHÔNG PHÂN BIỆT, 1: VÀO , 2: RA 
         /// </summary>
         public int? DevLaneCheck { get; set; }
+        public string DeviceId { get; set; }
 
         public virtual TDeviceType DevType { get; set; }
         public virtual AZone Zon { get; set; }

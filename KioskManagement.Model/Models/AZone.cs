@@ -8,6 +8,7 @@ namespace KioskManagement.Model.Models
         public AZone()
         {
             TDevices = new HashSet<TDevice>();
+            TEmployees = new HashSet<TEmployee>();
         }
 
         public int ZonId { get; set; }
@@ -17,5 +18,6 @@ namespace KioskManagement.Model.Models
         public int? PlaceId { get; set; }
 
         public virtual ICollection<TDevice> TDevices { get; set; }
+        public virtual ICollection<TEmployee> TEmployees { get; set; }
     }
 }

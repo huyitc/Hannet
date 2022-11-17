@@ -154,19 +154,6 @@ namespace KioskManagement.WebApi.Controllers
             {
                 var tGroupAccess = _mapper.Map<TGroupAccessViewModel, TGroupAccess>(groupAccessViewModel);
                 var result = await _iTGroupAccessService.Update(tGroupAccess);
-                var empList = await _tEmployeeService.GetAllByGaId(result.GaId);
-                foreach (var emp in empList)
-                {
-                    try
-                    {
-                        emp.EditStatus = true;
-                        await _tEmployeeService.Update(emp);
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                }
                 var responseData = _mapper.Map<TGroupAccess, TGroupAccessViewModel>(result);
                 return CreatedAtAction(nameof(Update), responseData);
             }

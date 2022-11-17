@@ -28,12 +28,10 @@ namespace KioskManagement.Data.Repositories
             if (keyword == null)
             {
                 var query = from em in _dbContext.TEmployees
-                            join ga in _dbContext.TGroupAccesses on em.GaId equals ga.GaId
                             join d in _dbContext.TDepartments on em.DepId equals d.DepId into de
                             from dep in de.DefaultIfEmpty()
                             join r in _dbContext.TRegencies on em.RegId equals r.RegId into re
                             from reg in re.DefaultIfEmpty()
-                            where em.EditStatus == true
                             select new AdditionalSyncMapping
                             {
                                 EmId = em.EmId,
@@ -41,19 +39,17 @@ namespace KioskManagement.Data.Repositories
                                 EmCode = em.EmCode,
                                 DepName = dep.DepName,
                                 RegName = reg.RegName,
-                                GaName = ga.GaName,
                             };
                 return (await query.ToListAsync()).AsQueryable();
             }
             else
             {
                 var query = from em in _dbContext.TEmployees
-                            join ga in _dbContext.TGroupAccesses on em.GaId equals ga.GaId
                             join d in _dbContext.TDepartments on em.DepId equals d.DepId into de
                             from dep in de.DefaultIfEmpty()
                             join r in _dbContext.TRegencies on em.RegId equals r.RegId into re
                             from reg in re.DefaultIfEmpty()
-                            where em.EditStatus == true && (em.EmName.Contains(keyword) || dep.DepName.Contains(keyword) || reg.RegName.Contains(keyword) || ga.GaName.Contains(keyword))
+                            where (em.EmName.Contains(keyword) || dep.DepName.Contains(keyword) || reg.RegName.Contains(keyword))
                             select new AdditionalSyncMapping
                             {
                                 EmId = em.EmId,
@@ -61,7 +57,6 @@ namespace KioskManagement.Data.Repositories
                                 EmCode = em.EmCode,
                                 DepName = dep.DepName,
                                 RegName = reg.RegName,
-                                GaName = ga.GaName,
                             };
                 return (await query.ToListAsync()).AsQueryable();
             }

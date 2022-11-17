@@ -78,6 +78,15 @@ namespace KioskManagement.WebApi.Controllers
             }
             try
             {
+                var bod = new AZoneHanet
+                {
+                    placeID = aZoneViewModel.PlaceId,
+                    name = aZoneViewModel.ZonName,
+                    address = aZoneViewModel.ZonDescription
+                };
+                var settings = new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate };
+
+                var res = await Lib.MethodPostAsyncHanet("https://partner.hanet.ai/place/updatePlace", bod);
                 var result = await _aZoneService.Update(_mapper.Map<AZoneViewModel, AZone>(aZoneViewModel));
                 var responseData = _mapper.Map<AZone, AZoneViewModel>(result);
                 return CreatedAtAction(nameof(Update), responseData);

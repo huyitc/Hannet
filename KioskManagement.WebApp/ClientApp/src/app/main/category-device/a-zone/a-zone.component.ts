@@ -40,7 +40,8 @@ export class AZoneComponent implements OnInit {
       zonId: 0,
       zonName: ['', Validators.compose([Validators.required, Validators.maxLength(200)])],
       zonDescription: ['', Validators.compose([Validators.required, Validators.maxLength(200)])],
-      zonStatus: true
+      zonStatus: true,
+      placeId:''
     });
   }
 
@@ -142,6 +143,7 @@ export class AZoneComponent implements OnInit {
       this.aZoneForm.controls['zonName'].setValue(itemFilter.zonName);
       this.aZoneForm.controls['zonDescription'].setValue(itemFilter.zonDescription);
       this.aZoneForm.controls['zonStatus'].setValue(itemFilter.zonStatus);
+      this.aZoneForm.controls['placeId'].setValue(itemFilter.placeId);
     }
     const dialogRef = this.dialog.open(this.dialogTemplate, {
       width: '650px'
@@ -193,7 +195,8 @@ export class AZoneComponent implements OnInit {
         zonId:this.aZoneForm.controls['zonId'].value,
         zonName: this.aZoneForm.controls['zonName'].value,
         zonDescription: this.aZoneForm.controls['zonDescription'].value,
-        zonStatus: this.aZoneForm.controls['zonStatus'].value
+        zonStatus: this.aZoneForm.controls['zonStatus'].value,
+        placeId: this.aZoneForm.controls['placeId'].value
       };
       this.dataService.put('aZone/update', aZone).subscribe((data: any) => {
         let message!: string;

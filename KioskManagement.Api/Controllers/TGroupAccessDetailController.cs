@@ -87,7 +87,6 @@ namespace KioskManagement.WebApi.Controllers
                 var tEmployees = await _iTGroupAccessDetailService.GetTEmployeeByGaIdAndHaveStatus(gaId);
                 foreach (var itemTEmployee in tEmployees)
                 {
-                    itemTEmployee.EditStatus = true;
                     await _tEmployeeService.Update(itemTEmployee);
                 }
 

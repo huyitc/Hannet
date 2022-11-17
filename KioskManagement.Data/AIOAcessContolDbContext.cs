@@ -24,15 +24,9 @@ namespace KioskManagement.Data
         public virtual DbSet<AppUser> AppUsers { get; set; }
         public virtual DbSet<AppUserGroup> AppUserGroups { get; set; }
         public virtual DbSet<AppUserRole> AppUserRoles { get; set; }
-        public virtual DbSet<ACustomer> ACustomers { get; set; }
         public virtual DbSet<ADateAttendance> ADateAttendances { get; set; }
         public virtual DbSet<ADateIoInfo> ADateIoInfos { get; set; }
-        public virtual DbSet<AGroupElevator> AGroupElevators { get; set; }
-        public virtual DbSet<AHoliday> AHolidays { get; set; }
         public virtual DbSet<AIoInfo> AIoInfos { get; set; }
-        public virtual DbSet<ALeave> ALeaves { get; set; }
-        public virtual DbSet<ALeaveDetail> ALeaveDetails { get; set; }
-        public virtual DbSet<ALeaveType> ALeaveTypes { get; set; }
         public virtual DbSet<AMonthAtt> AMonthAtts { get; set; }
         public virtual DbSet<AMonthAtt2> AMonthAtt2s { get; set; }
         public virtual DbSet<AOfftime> AOfftimes { get; set; }
@@ -51,17 +45,13 @@ namespace KioskManagement.Data
         public virtual DbSet<ATimeAdd> ATimeAdds { get; set; }
         public virtual DbSet<ATimeAttendance> ATimeAttendances { get; set; }
         public virtual DbSet<AZone> AZones { get; set; }
-        public virtual DbSet<PShift> PShifts { get; set; }
         public virtual DbSet<TAccount> TAccounts { get; set; }
-        public virtual DbSet<TCardNo> TCardNos { get; set; }
         public virtual DbSet<TDepartment> TDepartments { get; set; }
         public virtual DbSet<TDevice> TDevices { get; set; }
         public virtual DbSet<TDeviceLicense> TDeviceLicenses { get; set; }
         public virtual DbSet<TDeviceType> TDeviceTypes { get; set; }
         public virtual DbSet<TEmployee> TEmployees { get; set; }
         public virtual DbSet<TEmployeeFace> TEmployeeFaces { get; set; }
-        public virtual DbSet<TEmployeeFinger> TEmployeeFingers { get; set; }
-        public virtual DbSet<TEmployeeQrcode> TEmployeeQrcodes { get; set; }
         public virtual DbSet<TEmployeeType> TEmployeeTypes { get; set; }
         public virtual DbSet<TGroupAccess> TGroupAccesses { get; set; }
         public virtual DbSet<TGroupAccessDetail> TGroupAccessDetails { get; set; }
@@ -71,11 +61,6 @@ namespace KioskManagement.Data
         public virtual DbSet<TRegency> TRegencies { get; set; }
         public virtual DbSet<TTimeAttendancyCheck> TTimeAttendancyChecks { get; set; }
         public virtual DbSet<TVisiblecontrol> TVisiblecontrols { get; set; }
-        public virtual DbSet<_01ConfigGate> _01ConfigGates { get; set; }
-        public virtual DbSet<_02Controler> _02Controlers { get; set; }
-        public virtual DbSet<_03ConfigLane> _03ConfigLanes { get; set; }
-        public virtual DbSet<_04Reader> _04Readers { get; set; }
-
 
 
         public virtual DbSet<AppMenuMappingSQL> GetMenuList { get; set; }
@@ -105,69 +90,7 @@ namespace KioskManagement.Data
             modelBuilder.Entity<IdentityUser<string>>().ToTable("AppUsers").HasKey(i => i.Id);
 
 
-            modelBuilder.Entity<ACustomer>(entity =>
-            {
-                entity.HasKey(e => e.TtId)
-                    .HasName("PK_dbo.TT_KHACH");
-
-                entity.ToTable("A_CUSTOMER");
-
-                entity.Property(e => e.TtId).HasColumnName("TT_ID");
-
-                entity.Property(e => e.EmIdCreated).HasColumnName("EM_ID_CREATED");
-
-                entity.Property(e => e.TtAnhChup).HasColumnName("TT_ANH_CHUP");
-
-                entity.Property(e => e.TtDvCt)
-                    .HasMaxLength(200)
-                    .HasColumnName("TT_DV_CT");
-
-                entity.Property(e => e.TtGioiTinh)
-                    .HasMaxLength(10)
-                    .HasColumnName("TT_GIOI_TINH");
-
-                entity.Property(e => e.TtHoTen)
-                    .HasMaxLength(50)
-                    .HasColumnName("TT_HO_TEN");
-
-                entity.Property(e => e.TtLoaiGt).HasColumnName("TT_LOAI_GT");
-
-                entity.Property(e => e.TtMatSau).HasColumnName("TT_MAT_SAU");
-
-                entity.Property(e => e.TtMatTruoc).HasColumnName("TT_MAT_TRUOC");
-
-                entity.Property(e => e.TtNgayCap)
-                    .HasMaxLength(10)
-                    .HasColumnName("TT_NGAY_CAP");
-
-                entity.Property(e => e.TtNgayHetHan)
-                    .HasMaxLength(10)
-                    .HasColumnName("TT_NGAY_HET_HAN");
-
-                entity.Property(e => e.TtNgaySinh)
-                    .HasMaxLength(10)
-                    .HasColumnName("TT_NGAY_SINH");
-
-                entity.Property(e => e.TtNoiCap)
-                    .HasMaxLength(400)
-                    .HasColumnName("TT_NOI_CAP");
-
-                entity.Property(e => e.TtQueQuan)
-                    .HasMaxLength(400)
-                    .HasColumnName("TT_QUE_QUAN");
-
-                entity.Property(e => e.TtQuocTich)
-                    .HasMaxLength(50)
-                    .HasColumnName("TT_QUOC_TICH");
-
-                entity.Property(e => e.TtSoGiayTo)
-                    .HasMaxLength(20)
-                    .HasColumnName("TT_SO_GIAY_TO");
-
-                entity.Property(e => e.TtThuongTru)
-                    .HasMaxLength(400)
-                    .HasColumnName("TT_THUONG_TRU");
-            });
+           
 
             modelBuilder.Entity<ADateAttendance>(entity =>
             {
@@ -201,57 +124,8 @@ namespace KioskManagement.Data
                     .HasColumnName("DI_VALUE");
             });
 
-            modelBuilder.Entity<AGroupElevator>(entity =>
-            {
-                entity.HasKey(e => e.GeId);
-
-                entity.ToTable("A_GROUP_ELEVATOR");
-
-                entity.Property(e => e.GeId).HasColumnName("GE_ID");
-
-                entity.Property(e => e.GeName)
-                    .HasMaxLength(100)
-                    .HasColumnName("GE_NAME");
-
-                entity.Property(e => e.GeNumberFloor)
-                    .HasMaxLength(100)
-                    .IsUnicode(false)
-                    .HasColumnName("GE_NUMBER_FLOOR");
-
-                entity.Property(e => e.GeStatus)
-                    .HasColumnName("GE_STATUS")
-                    .HasDefaultValueSql("((1))")
-                    .HasComment("TRẠNG THÁI HOẠT ĐỘNG CỦA NHÓM THANG MÁY");
-            });
-
-            modelBuilder.Entity<AHoliday>(entity =>
-            {
-                entity.HasKey(e => e.HolId);
-
-                entity.ToTable("A_HOLIDAY");
-
-                entity.Property(e => e.HolId).HasColumnName("HOL_ID");
-
-                entity.Property(e => e.HolFromDate)
-                    .HasMaxLength(5)
-                    .IsUnicode(false)
-                    .HasColumnName("HOL_FROM_DATE")
-                    .IsFixedLength();
-
-                entity.Property(e => e.HolName)
-                    .HasMaxLength(100)
-                    .HasColumnName("HOL_NAME");
-
-                entity.Property(e => e.HolStatus)
-                    .HasColumnName("HOL_STATUS")
-                    .HasDefaultValueSql("((1))");
-
-                entity.Property(e => e.HolToDate)
-                    .HasMaxLength(5)
-                    .IsUnicode(false)
-                    .HasColumnName("HOL_TO_DATE")
-                    .IsFixedLength();
-            });
+            
+           
 
             modelBuilder.Entity<AIoInfo>(entity =>
             {
@@ -283,80 +157,6 @@ namespace KioskManagement.Data
                     .HasConstraintName("FK_A_IO_INFO_DEV_ID");
             });
 
-            modelBuilder.Entity<ALeave>(entity =>
-            {
-                entity.HasKey(e => e.LeaId);
-
-                entity.ToTable("A_LEAVE");
-
-                entity.Property(e => e.LeaId).HasColumnName("LEA_ID");
-
-                entity.Property(e => e.EmId).HasColumnName("EM_ID");
-
-                entity.Property(e => e.FromCheck)
-                    .HasColumnName("FROM_CHECK")
-                    .HasComment("1: ca sáng,2: ca chiều, 3: cả ngày");
-
-                entity.Property(e => e.LeaFrom)
-                    .HasColumnType("date")
-                    .HasColumnName("LEA_FROM");
-
-                entity.Property(e => e.LeaStatus)
-                    .HasColumnName("LEA_STATUS")
-                    .HasDefaultValueSql("((1))");
-
-                entity.Property(e => e.LeaTo)
-                    .HasColumnType("date")
-                    .HasColumnName("LEA_TO");
-
-                entity.Property(e => e.LetId).HasColumnName("LET_ID");
-
-                entity.Property(e => e.ToCheck).HasColumnName("TO_CHECK");
-            });
-
-            modelBuilder.Entity<ALeaveDetail>(entity =>
-            {
-                entity.HasKey(e => e.LeadId);
-
-                entity.ToTable("A_LEAVE_DETAILS");
-
-                entity.Property(e => e.LeadId).HasColumnName("LEAD_ID");
-
-                entity.Property(e => e.Date)
-                    .HasColumnType("date")
-                    .HasColumnName("DATE");
-
-                entity.Property(e => e.EmId).HasColumnName("EM_ID");
-
-                entity.Property(e => e.LeaCheckAtt)
-                    .HasColumnName("LEA_CHECK_ATT")
-                    .HasComment("0: vào ngày ko làm việc- không lương, 1: nửa ca, 2: cả ngày");
-
-                entity.Property(e => e.LeaId)
-                    .HasColumnName("LEA_ID")
-                    .HasComment("");
-            });
-
-            modelBuilder.Entity<ALeaveType>(entity =>
-            {
-                entity.HasKey(e => e.LetId);
-
-                entity.ToTable("A_LEAVE_TYPE");
-
-                entity.Property(e => e.LetId).HasColumnName("LET_ID");
-
-                entity.Property(e => e.LetName)
-                    .HasMaxLength(200)
-                    .HasColumnName("LET_NAME");
-
-                entity.Property(e => e.LetSalary)
-                    .HasColumnName("LET_SALARY")
-                    .HasDefaultValueSql("((1))");
-
-                entity.Property(e => e.LetStatus)
-                    .HasColumnName("LET_STATUS")
-                    .HasDefaultValueSql("((1))");
-            });
 
             modelBuilder.Entity<AMonthAtt>(entity =>
             {
@@ -1133,31 +933,7 @@ namespace KioskManagement.Data
                 entity.Property(e => e.PlaceId).HasColumnName("PLACE_ID");
             });
 
-            modelBuilder.Entity<PShift>(entity =>
-            {
-                entity.HasKey(e => e.ShiftId);
-
-                entity.ToTable("P_SHIFT");
-
-                entity.Property(e => e.ShiftId).HasColumnName("SHIFT_ID");
-
-                entity.Property(e => e.Area)
-                    .HasMaxLength(200)
-                    .HasColumnName("AREA");
-
-                entity.Property(e => e.FromTime)
-                    .HasColumnType("time(0)")
-                    .HasColumnName("FROM_TIME");
-
-                entity.Property(e => e.Shift)
-                    .HasMaxLength(50)
-                    .HasColumnName("SHIFT");
-
-                entity.Property(e => e.ToTime)
-                    .HasColumnType("time(0)")
-                    .HasColumnName("TO_TIME");
-            });
-
+           
             modelBuilder.Entity<TAccount>(entity =>
             {
                 entity.HasKey(e => e.AccId);
@@ -1198,79 +974,7 @@ namespace KioskManagement.Data
                     .WithMany(p => p.TAccounts)
                     .HasForeignKey(d => d.PriId)
                     .HasConstraintName("FK_T_ACCOUNTS_T_PRIVILES");
-
-                entity.HasOne(d => d.Shift)
-                    .WithMany(p => p.TAccounts)
-                    .HasForeignKey(d => d.ShiftId)
-                    .HasConstraintName("FK_P_SHIFT_ACCOUNT");
-            });
-
-            modelBuilder.Entity<TCardNo>(entity =>
-            {
-                entity.HasKey(e => e.CaId)
-                    .HasName("PK_card_no21");
-
-                entity.ToTable("T_CARD_NO");
-
-                entity.Property(e => e.CaId).HasColumnName("CA_ID");
-
-                entity.Property(e => e.ApplyDate)
-                    .HasColumnType("date")
-                    .HasColumnName("APPLY_DATE");
-
-                entity.Property(e => e.CaDamaged).HasColumnName("CA_DAMAGED");
-
-                entity.Property(e => e.CaLost).HasColumnName("CA_LOST");
-
-                entity.Property(e => e.CaNo)
-                    .HasMaxLength(30)
-                    .IsUnicode(false)
-                    .HasColumnName("CA_NO");
-
-                entity.Property(e => e.CaNumber)
-                    .HasMaxLength(30)
-                    .IsUnicode(false)
-                    .HasColumnName("CA_NUMBER");
-
-                entity.Property(e => e.CaStatus).HasColumnName("CA_STATUS");
-
-                entity.Property(e => e.CaTypeCheck)
-                    .HasColumnName("CA_TYPE_CHECK")
-                    .HasComment("0: A, 1: P");
-
-                entity.Property(e => e.DateEdit)
-                    .HasColumnType("datetime")
-                    .HasColumnName("DATE_EDIT");
-
-                entity.Property(e => e.Destroyed).HasColumnName("DESTROYED");
-
-                entity.Property(e => e.DestroyedDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("DESTROYED_DATE");
-
-                entity.Property(e => e.EmId).HasColumnName("EM_ID");
-
-                entity.Property(e => e.EmIdCreated).HasColumnName("EM_ID_CREATED");
-
-                entity.Property(e => e.ExpriedDate)
-                    .HasColumnType("date")
-                    .HasColumnName("EXPRIED_DATE");
-
-                entity.Property(e => e.GeId).HasColumnName("GE_ID");
-
-                entity.Property(e => e.SynAccessDevice)
-                    .HasMaxLength(100)
-                    .HasColumnName("SYN_ACCESS_DEVICE");
-
-                entity.Property(e => e.Using)
-                    .HasColumnName("USING")
-                    .HasComment("thẻ vẫn của người hiện tại thì using = true, thu hồi thẻ và cấp mới cho người khác thì người cũ = false, người mới = true");
-
-                entity.HasOne(d => d.Em)
-                    .WithMany(p => p.TCardNos)
-                    .HasForeignKey(d => d.EmId)
-                    .HasConstraintName("FK_T_CARD_NO_T_EMPLOYEE");
-            });
+            }); 
 
             modelBuilder.Entity<TDepartment>(entity =>
             {
@@ -1397,22 +1101,11 @@ namespace KioskManagement.Data
 
                 entity.Property(e => e.EmId).HasColumnName("EM_ID");
 
-                entity.Property(e => e.CreatedDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CREATED_DATE")
-                    .HasDefaultValueSql("(getdate())");
-
                 entity.Property(e => e.DepId).HasColumnName("DEP_ID");
 
-                entity.Property(e => e.DevIdSynchronized).HasColumnName("DEV_ID_SYNCHRONIZED");
-
-                entity.Property(e => e.EditStatus)
-                    .HasColumnName("EDIT_STATUS")
-                    .HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.EmAddress)
+                entity.Property(e => e.Description)
                     .HasMaxLength(400)
-                    .HasColumnName("EM_ADDRESS");
+                    .HasColumnName("DESCRIPTION");
 
                 entity.Property(e => e.EmBirthdate)
                     .HasColumnType("date")
@@ -1435,7 +1128,6 @@ namespace KioskManagement.Data
                     .HasDefaultValueSql("((1))")
                     .IsFixedLength();
 
-                entity.Property(e => e.EmIdCreated).HasColumnName("EM_ID_CREATED");
 
                 entity.Property(e => e.EmIdentityNumber)
                     .HasMaxLength(15)
@@ -1457,26 +1149,17 @@ namespace KioskManagement.Data
                     .HasColumnName("EM_STATUS")
                     .HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.EmTimeCheck)
-                    .HasColumnName("EM_TIME_CHECK")
-                    .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.EmTypeId).HasColumnName("EM_TYPE_ID");
 
                 entity.Property(e => e.FaceExist).HasColumnName("FACE_EXIST");
 
-                entity.Property(e => e.GaId).HasColumnName("GA_ID");
-
-                entity.Property(e => e.Pin)
-                    .HasMaxLength(8)
-                    .IsUnicode(false)
-                    .HasColumnName("PIN");
 
                 entity.Property(e => e.RegId).HasColumnName("REG_ID");
 
-                entity.Property(e => e.SchDevId)
-                    .HasColumnName("SCH_DEV_ID")
-                    .HasDefaultValueSql("((63))");
+                entity.Property(e => e.PlaceId).HasColumnName("PLACE_ID");
+
+                entity.Property(e => e.ZonId).HasColumnName("ZON_ID");
 
                 entity.HasOne(d => d.Dep)
                     .WithMany(p => p.TEmployees)
@@ -1488,15 +1171,15 @@ namespace KioskManagement.Data
                     .HasForeignKey(d => d.EmTypeId)
                     .HasConstraintName("FK_T_EMPLOYEE_T_EMPLOYEE_TYPE1");
 
-                entity.HasOne(d => d.Ga)
-                    .WithMany(p => p.TEmployees)
-                    .HasForeignKey(d => d.GaId)
-                    .HasConstraintName("FK_T_EMPLOYEE_T_GROUP_DEVICE");
-
                 entity.HasOne(d => d.Reg)
                     .WithMany(p => p.TEmployees)
                     .HasForeignKey(d => d.RegId)
                     .HasConstraintName("FK_T_EMPLOYEE_REGENCY");
+
+                entity.HasOne(d => d.Zon)
+                    .WithMany(p => p.TEmployees)
+                    .HasForeignKey(d => d.ZonId)
+                    .HasConstraintName("FK_T_EMPLOYEE_A_ZONE");
             });
 
             modelBuilder.Entity<TEmployeeFace>(entity =>
@@ -1523,67 +1206,6 @@ namespace KioskManagement.Data
                     .HasConstraintName("FK_EM_FACE_T_EMPLOYEE");
             });
 
-            modelBuilder.Entity<TEmployeeFinger>(entity =>
-            {
-                entity.HasKey(e => e.FinId);
-
-                entity.ToTable("T_EMPLOYEE_FINGER");
-
-                entity.Property(e => e.FinId).HasColumnName("FIN_ID");
-
-                entity.Property(e => e.EmId).HasColumnName("EM_ID");
-
-                entity.Property(e => e.FinDeviceType)
-                    .HasMaxLength(20)
-                    .IsUnicode(false)
-                    .HasColumnName("FIN_DEVICE_TYPE");
-
-                entity.Property(e => e.FinFormatValue).HasColumnName("FIN_FORMAT_VALUE");
-
-                entity.Property(e => e.FinPosition).HasColumnName("FIN_POSITION");
-
-                entity.Property(e => e.FinUrlValue).HasColumnName("FIN_URL_VALUE");
-
-                entity.Property(e => e.FinValue).HasColumnName("FIN_VALUE");
-
-                entity.Property(e => e.Hand)
-                    .HasMaxLength(5)
-                    .HasColumnName("HAND")
-                    .IsFixedLength();
-
-                entity.HasOne(d => d.Em)
-                    .WithMany(p => p.TEmployeeFingers)
-                    .HasForeignKey(d => d.EmId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_T_EMPLOYEE_FINGER_T_EMPLOYEE");
-            });
-
-            modelBuilder.Entity<TEmployeeQrcode>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToTable("T_EMPLOYEE_QRCODE");
-
-                entity.Property(e => e.DateFrom)
-                    .HasMaxLength(100)
-                    .HasColumnName("DATE_FROM");
-
-                entity.Property(e => e.DateTo)
-                    .HasMaxLength(100)
-                    .HasColumnName("DATE_TO");
-
-                entity.Property(e => e.EmId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("EM_ID");
-
-                entity.Property(e => e.QrCode)
-                    .HasMaxLength(200)
-                    .HasColumnName("QR_CODE");
-
-                entity.Property(e => e.QrCodeUrl)
-                    .HasMaxLength(200)
-                    .HasColumnName("QR_CODE_URL");
-            });
 
             modelBuilder.Entity<TEmployeeType>(entity =>
             {
@@ -1775,164 +1397,6 @@ namespace KioskManagement.Data
                     .WithMany(p => p.TVisiblecontrols)
                     .HasForeignKey(d => d.PriId)
                     .HasConstraintName("FK_T_VISIBLECONTROLS_PRIVILES");
-            });
-
-            modelBuilder.Entity<_01ConfigGate>(entity =>
-            {
-                entity.ToTable("01_CONFIG_GATES");
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.Name)
-                    .HasMaxLength(200)
-                    .HasColumnName("NAME");
-            });
-
-            modelBuilder.Entity<_02Controler>(entity =>
-            {
-                entity.ToTable("02_CONTROLER");
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.ControlerIp)
-                    .HasMaxLength(100)
-                    .HasColumnName("CONTROLER_IP")
-                    .IsFixedLength();
-
-                entity.Property(e => e.ControlerName)
-                    .HasMaxLength(30)
-                    .HasColumnName("CONTROLER_NAME")
-                    .IsFixedLength();
-
-                entity.Property(e => e.GateId).HasColumnName("GATE_ID");
-
-                entity.Property(e => e.MacRelay)
-                    .HasMaxLength(12)
-                    .HasColumnName("MAC_RELAY")
-                    .IsFixedLength();
-            });
-
-            modelBuilder.Entity<_03ConfigLane>(entity =>
-            {
-                entity.ToTable("03_CONFIG_LANES");
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.AutoRecognition).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.Camplate1)
-                    .HasMaxLength(200)
-                    .HasColumnName("CAMPLATE1");
-
-                entity.Property(e => e.Camplate2)
-                    .HasMaxLength(200)
-                    .HasColumnName("CAMPLATE2");
-
-                entity.Property(e => e.Camview)
-                    .HasMaxLength(200)
-                    .HasColumnName("CAMVIEW");
-
-                entity.Property(e => e.DeviationAngle)
-                    .HasMaxLength(10)
-                    .HasDefaultValueSql("((30))")
-                    .IsFixedLength();
-
-                entity.Property(e => e.Editplate)
-                    .HasMaxLength(10)
-                    .HasColumnName("EDITPLATE")
-                    .IsFixedLength();
-
-                entity.Property(e => e.GateId).HasColumnName("GATE_ID");
-
-                entity.Property(e => e.Lanetype)
-                    .HasMaxLength(4)
-                    .HasColumnName("LANETYPE")
-                    .IsFixedLength();
-
-                entity.Property(e => e.MaxCharHeight)
-                    .HasMaxLength(10)
-                    .HasDefaultValueSql("((120))")
-                    .IsFixedLength();
-
-                entity.Property(e => e.MinCharHeight)
-                    .HasMaxLength(10)
-                    .HasDefaultValueSql("((10))")
-                    .IsFixedLength();
-
-                entity.Property(e => e.MovePosition).HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.Name)
-                    .HasMaxLength(100)
-                    .HasColumnName("NAME");
-
-                entity.Property(e => e.Opengate)
-                    .HasMaxLength(10)
-                    .HasColumnName("OPENGATE")
-                    .IsFixedLength();
-
-                entity.Property(e => e.Orderby).HasColumnName("ORDERBY");
-
-                entity.Property(e => e.Printer)
-                    .HasMaxLength(10)
-                    .HasColumnName("PRINTER")
-                    .IsFixedLength();
-
-                entity.Property(e => e.Recapture)
-                    .HasMaxLength(20)
-                    .HasColumnName("RECAPTURE")
-                    .IsFixedLength();
-
-                entity.Property(e => e.Roi)
-                    .HasMaxLength(50)
-                    .HasColumnName("ROI")
-                    .IsFixedLength();
-
-                entity.Property(e => e.Roicar)
-                    .HasMaxLength(50)
-                    .HasColumnName("ROICAR")
-                    .IsFixedLength();
-
-                entity.Property(e => e.RotateAngle)
-                    .HasMaxLength(10)
-                    .HasDefaultValueSql("((5))")
-                    .IsFixedLength();
-
-                entity.Property(e => e.Vehicletype)
-                    .HasMaxLength(4)
-                    .HasColumnName("VEHICLETYPE")
-                    .IsFixedLength();
-
-                entity.Property(e => e.Viewimg)
-                    .HasMaxLength(10)
-                    .HasColumnName("VIEWIMG")
-                    .IsFixedLength();
-            });
-
-            modelBuilder.Entity<_04Reader>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToTable("04_READERS");
-
-                entity.Property(e => e.ControllerName)
-                    .HasMaxLength(30)
-                    .HasColumnName("CONTROLLER_NAME")
-                    .IsFixedLength();
-
-                entity.Property(e => e.Delay).HasColumnName("DELAY");
-
-                entity.Property(e => e.GateId).HasColumnName("GATE_ID");
-
-                entity.Property(e => e.MacRelay).HasColumnName("MAC_RELAY");
-
-                entity.Property(e => e.Orderby).HasColumnName("ORDERBY");
-
-                entity.Property(e => e.Reader).HasColumnName("READER");
-
-                entity.Property(e => e.TypeReader)
-                    .HasMaxLength(2)
-                    .HasColumnName("TYPE_READER")
-                    .IsFixedLength();
             });
 
         }

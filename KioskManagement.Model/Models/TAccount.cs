@@ -16,6 +16,5 @@ namespace KioskManagement.Model.Models
 
         public virtual TEmployee Em { get; set; }
         public virtual TPrivile Pri { get; set; }
-        public virtual PShift Shift { get; set; }
     }
 }

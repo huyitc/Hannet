@@ -20,6 +20,17 @@ namespace KioskManagement.Model.ViewModels
         public string name { get; set; }
         public string address { get; set; }
         public int? id { get; set; }
+        public int? placeID { get; set; }
+    }
+
+    public class EmployeeHanet
+    {
+        public string name { get; set; }
+        public byte[] file { get; set; }
+        public string aliasID { get; set; }
+        public int? placeID { get; set; }
+        public string tiltle { get; set; }
+        public int? type { get; set; }
     }
 
     public class PlaceModel

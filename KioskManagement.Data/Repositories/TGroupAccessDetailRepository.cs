@@ -37,7 +37,7 @@ namespace KioskManagement.Data.Repositories
         public async Task<IQueryable<TEmployee>> GetTEmployeeByGaIdAndHaveStautus(int gaId)
         {
             var query = await (from em in _dbContext.TEmployees
-                               where em.GaId == gaId && em.EmStatus == true
+                               where em.EmStatus == true
                                select em).ToListAsync();
             return query.AsQueryable();
         }

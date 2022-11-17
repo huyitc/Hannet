@@ -61,7 +61,8 @@ export class TDeviceComponent implements OnInit {
       devLaneCheck: [0, Validators.compose([Validators.required])],
       devStatus: true,
       zonId: 0,
-      devTypeId: 0
+      devTypeId: 0,
+      deviceId:'',
     });
   }
   ngOnInit(): void {
@@ -251,6 +252,7 @@ export class TDeviceComponent implements OnInit {
         this.tDeviceForm.controls['devMacaddress'].setValue(item.devMacaddress);
         this.tDeviceForm.controls['devStatus'].setValue(item.devStatus);
         this.tDeviceForm.controls['devLaneCheck'].setValue(item.devLaneCheck);
+        this.tDeviceForm.controls['deviceId'].setValue(item.deviceId);
         let aZoneDb = this.aZones.filter((x: any) => x.zonId == item.zonId)[0];
         this.aZoneControl.setValue(aZoneDb);
         let tDevTypeDb = this.tDeviceTypes.filter((x: any) => x.devTypeId == item.devTypeId)[0];
@@ -292,7 +294,8 @@ export class TDeviceComponent implements OnInit {
       devLaneCheck: [0, Validators.compose([Validators.required])],
       devStatus: true,
       zonId: 0,
-      devTypeId: 0
+      devTypeId: 0,
+      deviceId:''
     });
   }
   get getValidForm(): { [key: string]: AbstractControl } {
