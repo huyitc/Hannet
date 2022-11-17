@@ -27,12 +27,11 @@ namespace KioskManagement.Model.Models
         public byte[] EmImage { get; set; }
         public bool? EmStatus { get; set; }
         public bool? FaceExist { get; set; }
-        public int PlaceId { get; set; }
-        public int ZonId { get; set; }
+        public int? PlaceId { get; set; }
+        public int? ZonId { get; set; }
 
         public virtual TDepartment Dep { get; set; }
         public virtual TEmployeeType EmType { get; set; }
-        public virtual TGroupAccess Ga { get; set; }
         public virtual TRegency Reg { get; set; }
         public virtual AZone Zon { get; set; }
         public virtual ICollection<ATimeAdd> ATimeAdds { get; set; }

@@ -159,15 +159,54 @@ namespace KioskManagement.WebApi.Controllers
                     name = employee.EmName,
                     file = employee.EmImage,
                     aliasID = employee.EmCode,
-                    placeID = employee.PlaceId,
+                    placeID = employee.PlaceId.ToString(),
                     tiltle = employee.EmAddress,
                     type = employee.EmTypeId,
                 };
                 var settings = new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate };
-                var res = await Lib.MethodPostAsyncHanet("https://partner.hanet.ai/place/addPlace", bod);
+                //var res = await Lib.MethodPostAsyncHanet("https://partner.hanet.ai/place/addPlace", bod);
                 TEmployee em = _mapper.Map<TEmployee>(employee);
                 var result = await _TEmployeeService.Add(em);
                 return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        /// <summary>
+        /// Thêm mới nhân viên
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        [HttpPost("sync")]
+        [Authorize(Roles = "CreateTEmployee")]
+        public async Task<IActionResult> SyncEmployee()
+        {
+            _logger.LogInformation("Run endpoint {endpoint} {verb}", "/api/aioaccesscontrol/TEmployee/create", "POST");
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var resultEmp = await _TEmployeeService.GetAllByMapping("");
+                foreach(var emp in resultEmp)
+                {
+                    var bodE = new EmployeeHanet
+                    {
+                        name = emp.EmName,
+                        file = emp.EmImage,
+                        aliasID = emp.EmCode,
+                        placeID = "9570",
+                        tiltle = "Sync Employee",
+                        type = emp.EmTypeId,
+                    };
+                    var settingsE = new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate };
+                    var resE = await Lib.MethodPostFile("https://partner.hanet.ai/person/register", bodE);
+                }
+                return Ok("");
             }
             catch (Exception ex)
             {

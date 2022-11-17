@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using KioskManagement.Model.ViewModels;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
@@ -58,6 +59,24 @@ namespace KioskManagement.Common.Ultilities
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             request.AddParameter("token", AstecConstant.tokenHanet);
             var response = await client.ExecuteAsync(request);
+            return response;
+        }
+
+        public static async Task<HttpResponseMessage> MethodPostFile(string url,EmployeeHanet emHan)
+        {
+            HttpClient httpClient = new HttpClient();
+            MultipartFormDataContent form = new MultipartFormDataContent();
+
+            form.Add(new StringContent(AstecConstant.tokenHanet), "token");
+            form.Add(new StringContent(emHan.name), "name");
+            form.Add(new StringContent(emHan.tiltle), "title");
+            form.Add(new StringContent(emHan.aliasID), "aliasID");
+            form.Add(new StringContent(emHan.placeID), "placeID");
+            form.Add(new ByteArrayContent(emHan.file, 0, emHan.file.Length), "file", "hello1.jpg");
+            HttpResponseMessage response = await httpClient.PostAsync(url, form);
+
+            response.EnsureSuccessStatusCode();
+            httpClient.Dispose();
             return response;
         }
 

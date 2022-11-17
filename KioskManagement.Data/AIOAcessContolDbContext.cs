@@ -1227,8 +1227,7 @@ namespace KioskManagement.Data
 
             modelBuilder.Entity<TGroupAccess>(entity =>
             {
-                entity.HasKey(e => e.GaId)
-                    .HasName("PK_A_GROUP_DEVICE");
+                entity.HasKey(e => e.GaId);
 
                 entity.ToTable("T_GROUP_ACCESS");
 

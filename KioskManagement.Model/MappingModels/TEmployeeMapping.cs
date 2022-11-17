@@ -27,8 +27,8 @@ namespace KioskManagement.Model.MappingModels
         public bool? EmStatus { get; set; }
         public bool? FaceExist { get; set; }
         public bool? CheckFace { get; set; }
-        public int PlaceId { get; set; }
-        public int ZonId { get; set; }
+        public int? PlaceId { get; set; }
+        public int? ZonId { get; set; }
         public string ZonName { get; set; }
     }
 }

@@ -113,6 +113,27 @@ namespace KioskManagement.WebApi.Controllers
         }
 
         /// <summary>
+        /// Xem danh sách thiết bị
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("getdevicemorpho")]
+        [Authorize(Roles = "ViewTDevice")]
+        public async Task<IActionResult> Getdevicemorpho()
+        {
+            try
+            {
+                _logger.LogInformation("Run endpoint {endpoint} {verb}", "/api/aioaccesscontrol/TDevice/getall", "GET");
+                var result = await _tDeviceService.GetAll();
+                var responseData = _mapper.Map<IEnumerable<TDevice>, IEnumerable<TDeviceViewModel>>(result);
+                return Ok(responseData);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        /// <summary>
         /// Xem danh sách thiết bị phân trang
         /// </summary>
         /// <param name="page">Trang thứ</param>
