@@ -215,7 +215,7 @@ openDialog(action: string, item?: any, config?: MatDialogConfig) {
         this.employeeForm.controls['regId'].setValue(item.regId);
         this.employeeForm.controls['emTypeId'].setValue(item.emTypeId);
         this.employeeForm.controls['emGender'].setValue(item.emGender);
-        this.employeeForm.controls['emBirthdate'].setValue(item.emBirthdate);
+        this.employeeForm.controls['emBirthdate'].setValue(date);
         this.employeeForm.controls['emIdentityNumber'].setValue(item.emIdentityNumber);
         this.employeeForm.controls['emAddress'].setValue(item.emAddress);
         this.employeeForm.controls['description'].setValue(item.description);
