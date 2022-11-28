@@ -29,8 +29,14 @@ namespace KioskManagement.Model.ViewModels
         public byte[] file { get; set; }
         public string aliasID { get; set; }
         public string placeID { get; set; }
-        public string tiltle { get; set; }
+        public string title { get; set; }
         public int? type { get; set; }
+    }
+
+    public class DeleteEmployeeHannet
+    {
+       public int emId { get; set; }
+       public string aliasID { get; set; }
     }
 
     public class PlaceModel

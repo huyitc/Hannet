@@ -57,9 +57,11 @@ namespace KioskManagement.Data.Repositories
                                     DepId = em.DepId,
                                     DepName = dep.DepName,
                                     ZonId = zon.ZonId,
+                                    PlaceId = zon.PlaceId,
                                     ZonName = zon.ZonName,
                                     EmName = em.EmName,
                                     EmCode = em.EmCode,
+                                    EmAddress = em.EmAddress,
                                     Description = em.Description,
                                     EmGender = em.EmGender == "M" ? "Nam" : "Nữ",
                                     EmPhone = em.EmPhone,
@@ -68,8 +70,6 @@ namespace KioskManagement.Data.Repositories
                                     EmEmail = em.EmEmail,
                                     EmImage = em.EmImage,
                                     EmStatus = em.EmStatus,
-                                    FaceExist = em.FaceExist,
-                                    CheckFace = (from f in _dbContext.TEmployeeFaces where em.EmId == f.EmId select f).Count() > 0 ? true : false,
                                 }).ToListAsync()).AsQueryable();
             if (!string.IsNullOrEmpty(keyword))
                 query = query.Where(x => x.EmName.ToLower().Contains(keyword.ToLower()));

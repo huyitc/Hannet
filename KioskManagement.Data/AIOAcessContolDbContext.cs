@@ -1134,6 +1134,10 @@ namespace KioskManagement.Data
                     .IsUnicode(false)
                     .HasColumnName("EM_IDENTITY_NUMBER");
 
+                entity.Property(e => e.EmAddress)
+                    .HasMaxLength(500)
+                    .HasColumnName("EM_ADDRESS");
+
                 entity.Property(e => e.EmImage).HasColumnName("EM_IMAGE");
 
                 entity.Property(e => e.EmName)

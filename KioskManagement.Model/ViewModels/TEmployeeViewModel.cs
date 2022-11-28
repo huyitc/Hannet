@@ -18,10 +18,12 @@ namespace KioskManagement.Model.ViewModels
         public DateTime? EmBirthdate { get; set; }
         public string EmIdentityNumber { get; set; }
         public string EmAddress { get; set; }
+        public string Description { get; set; }
         public string EmPhone { get; set; }
         public string EmEmail { get; set; }
         public byte[] EmImage { get; set; }
         public bool? EmStatus { get; set; }
-        public int PlaceId { get; set; }
+        public int? PlaceId { get; set; }
+        public int? ZonId { get; set; }
     }
 }

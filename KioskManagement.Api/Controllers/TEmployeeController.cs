@@ -154,17 +154,17 @@ namespace KioskManagement.WebApi.Controllers
             }
             try
             {
-                var bod = new EmployeeHanet
-                {
-                    name = employee.EmName,
-                    file = employee.EmImage,
-                    aliasID = employee.EmCode,
-                    placeID = employee.PlaceId.ToString(),
-                    tiltle = employee.EmAddress,
-                    type = employee.EmTypeId,
-                };
-                var settings = new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate };
-                //var res = await Lib.MethodPostAsyncHanet("https://partner.hanet.ai/place/addPlace", bod);
+                    var bodE = new EmployeeHanet
+                    {
+                        name = employee.EmName,
+                        file = employee.EmImage,
+                        aliasID = employee.EmCode,
+                        placeID = employee.PlaceId.ToString(),
+                        title = employee.Description,
+                        type = employee.EmTypeId,
+                    };
+                var settingsE = new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate };
+                var resE = await Lib.MethodPostFile("https://partner.hanet.ai/person/register", bodE);
                 TEmployee em = _mapper.Map<TEmployee>(employee);
                 var result = await _TEmployeeService.Add(em);
                 return Ok(result);
@@ -175,44 +175,7 @@ namespace KioskManagement.WebApi.Controllers
             }
         }
 
-        /// <summary>
-        /// Thêm mới nhân viên
-        /// </summary>
-        /// <param name="employee"></param>
-        /// <returns></returns>
-        [HttpPost("sync")]
-        [Authorize(Roles = "CreateTEmployee")]
-        public async Task<IActionResult> SyncEmployee()
-        {
-            _logger.LogInformation("Run endpoint {endpoint} {verb}", "/api/aioaccesscontrol/TEmployee/create", "POST");
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            try
-            {
-                var resultEmp = await _TEmployeeService.GetAllByMapping("");
-                foreach(var emp in resultEmp)
-                {
-                    var bodE = new EmployeeHanet
-                    {
-                        name = emp.EmName,
-                        file = emp.EmImage,
-                        aliasID = emp.EmCode,
-                        placeID = "9570",
-                        tiltle = "Sync Employee",
-                        type = emp.EmTypeId,
-                    };
-                    var settingsE = new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate };
-                    var resE = await Lib.MethodPostFile("https://partner.hanet.ai/person/register", bodE);
-                }
-                return Ok("");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
+     
 
         /// <summary>
         /// Chỉnh sửa employee
@@ -223,17 +186,26 @@ namespace KioskManagement.WebApi.Controllers
         [Authorize(Roles = "UpdateTEmployee")]
         public async Task<IActionResult> Update(TEmployeeViewModel employee)
         {
-            _logger.LogInformation("Run endpoint {endpoint} {verb}", "/api/aioaccesscontrol/TEmployee/update", "PUT");
+            _logger.LogInformation("Run endpoint {endpoint} {verb}", "/api/aioaccesscontrol/employee/update", "PUT");
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             try
             {
-                TEmployee em = _mapper.Map<TEmployee>(employee);
-                var result = await _TEmployeeService.Update(em);
-                var mapping = _mapper.Map<TEmployeeViewModel>(result);
-                return Ok(mapping);
+                var bod = new EmployeeHanet
+                {
+                    aliasID = employee.EmCode,
+                    placeID = employee.PlaceId.ToString(),
+                    name = employee.EmName,
+                    title = employee.Description
+                };
+                var settings = new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate };
+
+                var res = await Lib.MethodPostAsyncHanet("https://partner.hanet.ai/person/updateInfo", bod);
+                var result = await _TEmployeeService.Update(_mapper.Map<TEmployeeViewModel, TEmployee>(employee));
+                var responseData = _mapper.Map<TEmployee, TEmployeeViewModel>(result);
+                return CreatedAtAction(nameof(Update), responseData);
             }
             catch (Exception ex)
             {
@@ -246,7 +218,7 @@ namespace KioskManagement.WebApi.Controllers
         /// </summary>
         /// <param name="checkedList"></param>
         /// <returns></returns>
-        [HttpDelete("lockmulti")]
+        [HttpDelete("DeleteMuitiple")]
         [Authorize(Roles = "LockTEmployee")]
         public async Task<IActionResult> DeleteMulti(string checkedList)
         {
@@ -261,15 +233,14 @@ namespace KioskManagement.WebApi.Controllers
                 {
                     int countSuccess = 0;
                     int countError = 0;
-                    List<int> result = new List<int>();
-                    var listItem = JsonConvert.DeserializeObject<List<int>>(checkedList);
+                    List<string> result = new List<string>();
+                    var listItem = JsonConvert.DeserializeObject<List<DeleteEmployeeHannet>>(checkedList);
                     foreach (var item in listItem)
                     {
                         try
                         {
-                            var em = await _TEmployeeService.GetById(item);
-                            em.EmStatus = false;
-                            var emNew = await _TEmployeeService.Update(em);
+                            var res = await Lib.MethodPostAsyncHanet("https://partner.hanet.ai/person/remove", new { aliasID = item.aliasID });
+                            await _TEmployeeService.Delete(item.emId);
                             countSuccess++;
                         }
                         catch (Exception)
@@ -277,8 +248,8 @@ namespace KioskManagement.WebApi.Controllers
                             countError++;
                         }
                     }
-                    result.Add(countSuccess);
-                    result.Add(countError);
+                    result.Add("Xóa thành công: " + countSuccess);
+                    result.Add("Lỗi: " + countError);
                     return Ok(result);
                 }
                 catch (Exception ex)

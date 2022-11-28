@@ -69,7 +69,7 @@ namespace KioskManagement.Common.Ultilities
 
             form.Add(new StringContent(AstecConstant.tokenHanet), "token");
             form.Add(new StringContent(emHan.name), "name");
-            form.Add(new StringContent(emHan.tiltle), "title");
+            form.Add(new StringContent(emHan.title), "title");
             form.Add(new StringContent(emHan.aliasID), "aliasID");
             form.Add(new StringContent(emHan.placeID), "placeID");
             form.Add(new ByteArrayContent(emHan.file, 0, emHan.file.Length), "file", "hello1.jpg");
@@ -77,6 +77,17 @@ namespace KioskManagement.Common.Ultilities
 
             response.EnsureSuccessStatusCode();
             httpClient.Dispose();
+            return response;
+        }
+
+        public static async Task<IRestResponse> MethodPostUpdateEmployeeHanet(string url, object data)
+        {
+            var client = new RestClient(url) { Timeout = 5000 };
+            var request = new RestRequest { Method = Method.POST };
+            request.AddHeader("Content-Type", "text/plain");
+            request.AddParameter("token", AstecConstant.tokenHanet);
+            request.AddObject(data);
+            var response = await client.ExecuteAsync(request);
             return response;
         }
 

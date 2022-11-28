@@ -7341,11 +7341,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\WebBase\\KioskManagement.Service\\KioskManagement.Service.csproj",
+      "projectUniqueName": "F:\\HANNET\\Hannet\\Hannet\\KioskManagement.Service\\KioskManagement.Service.csproj",
       "projectName": "KioskManagement.Service",
-      "projectPath": "F:\\WebBase\\KioskManagement.Service\\KioskManagement.Service.csproj",
+      "projectPath": "F:\\HANNET\\Hannet\\Hannet\\KioskManagement.Service\\KioskManagement.Service.csproj",
       "packagesPath": "C:\\Users\\HuyLN\\.nuget\\packages\\",
-      "outputPath": "F:\\WebBase\\KioskManagement.Service\\obj\\",
+      "outputPath": "F:\\HANNET\\Hannet\\Hannet\\KioskManagement.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -7366,14 +7366,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "F:\\WebBase\\KioskManagement.Common\\KioskManagement.Common.csproj": {
-              "projectPath": "F:\\WebBase\\KioskManagement.Common\\KioskManagement.Common.csproj"
+            "F:\\HANNET\\Hannet\\Hannet\\KioskManagement.Common\\KioskManagement.Common.csproj": {
+              "projectPath": "F:\\HANNET\\Hannet\\Hannet\\KioskManagement.Common\\KioskManagement.Common.csproj"
             },
-            "F:\\WebBase\\KioskManagement.Data\\KioskManagement.Data.csproj": {
-              "projectPath": "F:\\WebBase\\KioskManagement.Data\\KioskManagement.Data.csproj"
+            "F:\\HANNET\\Hannet\\Hannet\\KioskManagement.Data\\KioskManagement.Data.csproj": {
+              "projectPath": "F:\\HANNET\\Hannet\\Hannet\\KioskManagement.Data\\KioskManagement.Data.csproj"
             },
-            "F:\\WebBase\\KioskManagement.Model\\KioskManagement.Model.csproj": {
-              "projectPath": "F:\\WebBase\\KioskManagement.Model\\KioskManagement.Model.csproj"
+            "F:\\HANNET\\Hannet\\Hannet\\KioskManagement.Model\\KioskManagement.Model.csproj": {
+              "projectPath": "F:\\HANNET\\Hannet\\Hannet\\KioskManagement.Model\\KioskManagement.Model.csproj"
             }
           }
         }
