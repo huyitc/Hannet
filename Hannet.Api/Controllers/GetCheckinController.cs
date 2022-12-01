@@ -1,4 +1,5 @@
 ﻿using Hannet.Common.Ultilities;
+using Hannet.Model.MappingModels;
 using Hannet.Model.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -30,7 +31,8 @@ namespace Hannet.WebApi.Controllers
                 var settings = new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Populate };
 
                 var res = await Lib.MethodPostAsyncHanet("https://partner.hanet.ai/person/getCheckinByPlaceIdInDay", bod);
-                return Ok(res);
+                CheckInByPlaceReponse resultInfo = JsonConvert.DeserializeObject<CheckInByPlaceReponse>(res.Content);
+                return Ok(resultInfo);
             }
             catch (Exception ex)
             {
