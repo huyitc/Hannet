@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "3qcCT6dm7HmMTKhAn69U9trUMP1QtsDnWEJqBmftCUA=",
+  "Source": "Hannet.WebApi",
+  "BasePath": "_content/Hannet.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Hannet.WebApi\\wwwroot",
+      "Source": "Hannet.WebApi",
+      "ContentRoot": "F:\\HANNET\\Hannet\\Hannet\\Hannet.Api\\wwwroot\\",
+      "BasePath": "_content/Hannet.WebApi",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

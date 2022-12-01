@@ -1,0 +1,15 @@
+F:\HANNET\Hannet\Hannet\Hannet.Common\obj\Debug\net6.0\Hannet.Common.dll
+F:\HANNET\Hannet\Hannet\Hannet.Common\obj\Debug\net6.0\refint\Hannet.Common.dll
+F:\HANNET\Hannet\Hannet\Hannet.Common\obj\Debug\net6.0\Hannet.Common.pdb
+F:\HANNET\Hannet\Hannet\Hannet.Common\bin\Debug\net6.0\Hannet.Common.deps.json
+F:\HANNET\Hannet\Hannet\Hannet.Common\bin\Debug\net6.0\Hannet.Common.dll
+F:\HANNET\Hannet\Hannet\Hannet.Common\bin\Debug\net6.0\Hannet.Common.pdb
+F:\HANNET\Hannet\Hannet\Hannet.Common\bin\Debug\net6.0\Hannet.Model.dll
+F:\HANNET\Hannet\Hannet\Hannet.Common\bin\Debug\net6.0\Hannet.Model.pdb
+F:\HANNET\Hannet\Hannet\Hannet.Common\obj\Debug\net6.0\Hannet.Common.csproj.AssemblyReference.cache
+F:\HANNET\Hannet\Hannet\Hannet.Common\obj\Debug\net6.0\Hannet.Common.GeneratedMSBuildEditorConfig.editorconfig
+F:\HANNET\Hannet\Hannet\Hannet.Common\obj\Debug\net6.0\Hannet.Common.AssemblyInfoInputs.cache
+F:\HANNET\Hannet\Hannet\Hannet.Common\obj\Debug\net6.0\Hannet.Common.AssemblyInfo.cs
+F:\HANNET\Hannet\Hannet\Hannet.Common\obj\Debug\net6.0\Hannet.Common.csproj.CoreCompileInputs.cache
+F:\HANNET\Hannet\Hannet\Hannet.Common\obj\Debug\net6.0\Hannet.Common.csproj.CopyComplete
+F:\HANNET\Hannet\Hannet\Hannet.Common\obj\Debug\net6.0\ref\Hannet.Common.dll

@@ -1,0 +1,16 @@
+F:\HANNET\Hannet\Hannet\Hannet.Model\bin\Debug\net6.0\Hannet.Model.deps.json
+F:\HANNET\Hannet\Hannet\Hannet.Model\bin\Debug\net6.0\Hannet.Model.runtimeconfig.json
+F:\HANNET\Hannet\Hannet\Hannet.Model\bin\Debug\net6.0\Hannet.Model.dll
+F:\HANNET\Hannet\Hannet\Hannet.Model\bin\Debug\net6.0\Hannet.Model.pdb
+F:\HANNET\Hannet\Hannet\Hannet.Model\obj\Debug\net6.0\Hannet.Model.csproj.AssemblyReference.cache
+F:\HANNET\Hannet\Hannet\Hannet.Model\obj\Debug\net6.0\Hannet.Model.Properties.Resources.resources
+F:\HANNET\Hannet\Hannet\Hannet.Model\obj\Debug\net6.0\Hannet.Model.csproj.GenerateResource.cache
+F:\HANNET\Hannet\Hannet\Hannet.Model\obj\Debug\net6.0\Hannet.Model.GeneratedMSBuildEditorConfig.editorconfig
+F:\HANNET\Hannet\Hannet\Hannet.Model\obj\Debug\net6.0\Hannet.Model.AssemblyInfoInputs.cache
+F:\HANNET\Hannet\Hannet\Hannet.Model\obj\Debug\net6.0\Hannet.Model.AssemblyInfo.cs
+F:\HANNET\Hannet\Hannet\Hannet.Model\obj\Debug\net6.0\Hannet.Model.csproj.CoreCompileInputs.cache
+F:\HANNET\Hannet\Hannet\Hannet.Model\obj\Debug\net6.0\Hannet.Model.dll
+F:\HANNET\Hannet\Hannet\Hannet.Model\obj\Debug\net6.0\refint\Hannet.Model.dll
+F:\HANNET\Hannet\Hannet\Hannet.Model\obj\Debug\net6.0\Hannet.Model.pdb
+F:\HANNET\Hannet\Hannet\Hannet.Model\obj\Debug\net6.0\Hannet.Model.genruntimeconfig.cache
+F:\HANNET\Hannet\Hannet\Hannet.Model\obj\Debug\net6.0\ref\Hannet.Model.dll
