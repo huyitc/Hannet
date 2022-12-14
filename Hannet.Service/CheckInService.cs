@@ -1,6 +1,8 @@
 ﻿using Hannet.Common.Exceptions;
 using Hannet.Data.Repositories;
+using Hannet.Model.MappingModels;
 using Hannet.Model.Models;
+using Hannet.Model.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,7 @@ namespace Hannet.Service
     public interface ICheckInService
     {
         Task<CheckIn> Add(CheckIn checkIn);
+        Task<bool> SyncLogCheckIn(IEnumerable<CheckIn> checkInByPlace, GetCheckin bod);
     }
     public class CheckInService : ICheckInService
     {
@@ -24,6 +27,11 @@ namespace Hannet.Service
         public async Task<CheckIn> Add(CheckIn checkIn)
         {
             return await _checkInRepository.AddASync(checkIn);
+        }
+
+        public async Task<bool> SyncLogCheckIn(IEnumerable<CheckIn> checkInByPlace, GetCheckin bod)
+        {
+            return await _checkInRepository.SyncLogCheckIn(checkInByPlace, bod);
         }
     }
 }

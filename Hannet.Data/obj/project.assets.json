@@ -7409,23 +7409,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HuyLN\\.nuget\\packages\\": {},
+    "C:\\Users\\HienLT\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\HANNET\\Hannet\\Hannet\\Hannet.Data\\Hannet.Data.csproj",
+      "projectUniqueName": "F:\\HANET\\Hannet\\Hannet.Data\\Hannet.Data.csproj",
       "projectName": "Hannet.Data",
-      "projectPath": "F:\\HANNET\\Hannet\\Hannet\\Hannet.Data\\Hannet.Data.csproj",
-      "packagesPath": "C:\\Users\\HuyLN\\.nuget\\packages\\",
-      "outputPath": "F:\\HANNET\\Hannet\\Hannet\\Hannet.Data\\obj\\",
+      "projectPath": "F:\\HANET\\Hannet\\Hannet.Data\\Hannet.Data.csproj",
+      "packagesPath": "C:\\Users\\HienLT\\.nuget\\packages\\",
+      "outputPath": "F:\\HANET\\Hannet\\Hannet.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\HuyLN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HienLT\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -7440,11 +7440,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "F:\\HANNET\\Hannet\\Hannet\\Hannet.Common\\Hannet.Common.csproj": {
-              "projectPath": "F:\\HANNET\\Hannet\\Hannet\\Hannet.Common\\Hannet.Common.csproj"
+            "F:\\HANET\\Hannet\\Hannet.Common\\Hannet.Common.csproj": {
+              "projectPath": "F:\\HANET\\Hannet\\Hannet.Common\\Hannet.Common.csproj"
             },
-            "F:\\HANNET\\Hannet\\Hannet\\Hannet.Model\\Hannet.Model.csproj": {
-              "projectPath": "F:\\HANNET\\Hannet\\Hannet\\Hannet.Model\\Hannet.Model.csproj"
+            "F:\\HANET\\Hannet\\Hannet.Model\\Hannet.Model.csproj": {
+              "projectPath": "F:\\HANET\\Hannet\\Hannet.Model\\Hannet.Model.csproj"
             }
           }
         }

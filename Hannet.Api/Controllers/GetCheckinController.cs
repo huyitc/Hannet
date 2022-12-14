@@ -1,5 +1,7 @@
-﻿using Hannet.Common.Ultilities;
+﻿using AutoMapper;
+using Hannet.Common.Ultilities;
 using Hannet.Model.MappingModels;
+using Hannet.Model.Models;
 using Hannet.Model.ViewModels;
 using Hannet.Service;
 using Microsoft.AspNetCore.Authorization;
@@ -14,9 +16,11 @@ namespace Hannet.WebApi.Controllers
     public class GetCheckinController : ControllerBase
     {
         private readonly ICheckInService _checkInService;
-        public GetCheckinController(ICheckInService checkInService)
+        private readonly IMapper _mapper;
+        public GetCheckinController(ICheckInService checkInService, IMapper mapper)
         {
             _checkInService = checkInService;
+            _mapper = mapper;
         }
 
 
@@ -40,6 +44,8 @@ namespace Hannet.WebApi.Controllers
                 var res = await Lib.MethodPostAsyncHanet("https://partner.hanet.ai/person/getCheckinByPlaceIdInDay", bod);
                 CheckInByPlaceReponse resultInfo = JsonConvert.DeserializeObject<CheckInByPlaceReponse>(res.Content);
 
+                var mapping = _mapper.Map<IEnumerable<CheckInByPlaceInDay>, IEnumerable<CheckIn>>(resultInfo.data);
+                _checkInService.SyncLogCheckIn(mapping, bod);
                 return Ok(resultInfo);
             }
             catch (Exception ex)

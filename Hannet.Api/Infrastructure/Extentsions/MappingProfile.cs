@@ -27,6 +27,7 @@ namespace Hannet.WebApi.Infrastructure.Extentsions
             CreateMap<TGroupAccessDetail, TGroupAccessDetailViewModel>().ReverseMap();
             CreateMap<TEmployeeType, TEmployeeTypeViewModel>().ReverseMap();
             CreateMap<TEmployee, UpdateImageEmployeeViewModel>().ReverseMap();
+            CreateMap<CheckIn, CheckInByPlaceInDay>().ReverseMap();
         }
     }
 }
