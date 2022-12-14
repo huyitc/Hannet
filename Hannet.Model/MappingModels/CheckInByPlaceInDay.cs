@@ -24,9 +24,12 @@ namespace Hannet.Model.MappingModels
 
     public class CheckInByPlaceReponse
     {
-        public int statusCode { get; set; }
-        public int returnCode   { get; set; }
-        public string returnMessage { get; set; }
         public List<CheckInByPlaceInDay> data { get; set; }
+    }
+
+    public class CheckInByPlaceInDayPram
+    {
+        public string placeID { get; set; }
+        public string date { get; set; }
     }
 }

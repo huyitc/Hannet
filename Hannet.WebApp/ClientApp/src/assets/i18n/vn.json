@@ -965,7 +965,22 @@
     "outofsync" : "Chưa đồng bộ",
     "both" : "Cả 2",
     "syncs" : "Dữ liệu từ"
+  },
+  "checkInByDate":{
+    "title" : "Danh sách check in trong ngày",
+    "date":"Ngày",
+    "checkButton":"Check In",
+    "personNameCol":"Tên",
+    "checkInTimeCol":"Thời gian",
+    "aliasIDCol":"Mã",
+    "placeIDCol":"Mã khu vực",
+    "personIDCol":"ID Người đăng kí",
+    "avatarCol":"Ảnh",
+    "placeCol":"Tên khu vực",
+    "titleCol":"Mô tả",
+    "typeCol":"Đối tượng",
+    "deviceIDCol":"Mã thiết bị",
+    "deviceNameCol":"Tên thiết bị",
+    "placeIdCodeRequired":"Vui lòng chọn mã khu vực"
   }
-
-
 }

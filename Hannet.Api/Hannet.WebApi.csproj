@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\SaveFileExcel\" />
+    <Folder Include="wwwroot\SaveFileLog\" />
   </ItemGroup>
 
   <ItemGroup>

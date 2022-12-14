@@ -37,7 +37,7 @@ export const mainRoutes: Routes = [
       {path:'t-groupaccess',loadChildren:()=>import('./category-device/t-groupaccess/t-groupaccess.module').then(x=>x.TGroupaccessModule)},
       {path:'t-employee',loadChildren:()=>import('./manage/t-employee/t-employee.module').then(x=>x.TEmployeeModule)},
       {path:'a-schedule-device-detail',loadChildren:()=>import('./category/a-schedule-device-detail/a-schedule-device-detail.module').then(x=>x.AScheduleDeviceDetailModule)},
-      {path:'sync',loadChildren:()=>import('./category-device/sync/sync.module').then(x=>x.SyncModule)},
+      {path:'check-in-by-day',loadChildren:()=>import('./manage/check-in-by-day/check-in-by-day.module').then(x=>x.CheckInByDayModule)},
     ]
   }
 ];

@@ -43,6 +43,7 @@ namespace Hannet.Data
         public virtual DbSet<ASchedule> ASchedules { get; set; }
         public virtual DbSet<AScheduleDeviceDetail> AScheduleDeviceDetails { get; set; }
         public virtual DbSet<ATimeAdd> ATimeAdds { get; set; }
+        public virtual DbSet<CheckIn> CheckIns { get; set; }
         public virtual DbSet<ATimeAttendance> ATimeAttendances { get; set; }
         public virtual DbSet<AZone> AZones { get; set; }
         public virtual DbSet<TAccount> TAccounts { get; set; }
@@ -995,6 +996,61 @@ namespace Hannet.Data
                 entity.Property(e => e.DepStatus)
                     .HasColumnName("DEP_STATUS")
                     .HasDefaultValueSql("((1))");
+            });
+
+            modelBuilder.Entity<CheckIn>(entity =>
+            {
+                entity.HasKey(e => e.CheckInId);
+
+                entity.ToTable("CHECK_IN");
+
+                entity.Property(e => e.CheckInId).HasColumnName("CHECKIN_ID");
+
+                entity.Property(e => e.PersonName)
+                    .HasMaxLength(250)
+                    .HasColumnName("PERSON_NAME");
+
+                entity.Property(e => e.Date)
+                    .HasMaxLength(20)
+                    .HasColumnName("DATE");
+
+                entity.Property(e => e.CheckinTime)
+                    .HasColumnName("CHECKIN_TIME");
+
+                entity.Property(e => e.AliasID)
+                    .HasMaxLength(20)
+                    .HasColumnName("ALIAS_ID");
+
+                entity.Property(e => e.PlaceID)
+                    .HasMaxLength(10)
+                    .HasColumnName("PLACE_ID");
+
+                entity.Property(e => e.PersonID)
+                    .HasMaxLength(250)
+                    .HasColumnName("PERSON_ID");
+
+                entity.Property(e => e.Avatar)
+                    .HasMaxLength(500)
+                    .HasColumnName("AVATAR");
+
+                entity.Property(e => e.Place)
+                    .HasMaxLength(400)
+                    .HasColumnName("PLACE");
+
+                entity.Property(e => e.Title)
+                    .HasMaxLength(20)
+                    .HasColumnName("TITLE");
+
+                entity.Property(e => e.Type)
+                    .HasColumnName("TYPE");
+
+                entity.Property(e => e.DeviceID)
+                    .HasMaxLength(50)
+                    .HasColumnName("DEVICE_ID");
+
+                entity.Property(e => e.DeviceName)
+                    .HasMaxLength(100)
+                    .HasColumnName("DEVICE_NAME");
             });
 
             modelBuilder.Entity<TDevice>(entity =>
